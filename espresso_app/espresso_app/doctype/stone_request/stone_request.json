@@ -1,0 +1,186 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:SRQ-{YYYY}-{#####}",
+ "creation": "2025-05-15 15:23:18.842730",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_yyzl",
+  "supplier",
+  "column_break_upww",
+  "company",
+  "status",
+  "abbr",
+  "column_break_bcoo",
+  "order_date",
+  "order_time",
+  "naming_series",
+  "section_break_phah",
+  "stone_order_item",
+  "section_break_uriq",
+  "column_break_vhrc",
+  "total_items",
+  "column_break_vgjc",
+  "total_qty"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_yyzl",
+   "fieldtype": "Section Break",
+   "hide_border": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_upww",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nOrdered\nReceived\nShipped"
+  },
+  {
+   "fetch_from": "company.abbr",
+   "fieldname": "abbr",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Abbr"
+  },
+  {
+   "fieldname": "column_break_bcoo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "order_date",
+   "fieldtype": "Date",
+   "label": "Order Date",
+   "reqd": 1
+  },
+  {
+   "default": "Now",
+   "fieldname": "order_time",
+   "fieldtype": "Time",
+   "label": "Order Time",
+   "reqd": 1
+  },
+  {
+   "default": "{abbr}-SRQ-####",
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series",
+   "no_copy": 1,
+   "options": "{abbr}-SRQ-####",
+   "unique": 1
+  },
+  {
+   "fieldname": "section_break_phah",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "stone_order_item",
+   "fieldtype": "Table",
+   "label": "Stone Order Item",
+   "options": "Stone Request Item"
+  },
+  {
+   "fieldname": "section_break_uriq",
+   "fieldtype": "Section Break",
+   "hide_border": 1
+  },
+  {
+   "fieldname": "column_break_vhrc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_items",
+   "fieldtype": "Int",
+   "label": "Total Items",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_vgjc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_qty",
+   "fieldtype": "Float",
+   "label": "Total Qty",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Sales Order",
+   "link_fieldname": "name"
+  },
+  {
+   "link_doctype": "Purchase Invoice",
+   "link_fieldname": "name"
+  },
+  {
+   "link_doctype": "Sales Invoice",
+   "link_fieldname": "name"
+  },
+  {
+   "link_doctype": "BOM",
+   "link_fieldname": "name"
+  }
+ ],
+ "modified": "2025-07-29 15:00:25.933385",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "Stone Request",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "ameerbabu@iwex.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "OMT",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

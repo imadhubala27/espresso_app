@@ -1,0 +1,262 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:customer_po_id",
+ "creation": "2025-06-23 15:52:07.284689",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "customer_purchase_order_details_section",
+  "customer",
+  "contact_person",
+  "department",
+  "customer_po_id",
+  "column_break_xwji",
+  "customer_po_date",
+  "delivery_date",
+  "status",
+  "column_break_nqfe",
+  "total_po_items",
+  "total_po_amount",
+  "po_attachment",
+  "column_break_bofw",
+  "value_comparision",
+  "section_break_qhib",
+  "column_break_iqdg",
+  "column_break_qyna",
+  "fetch_details",
+  "column_break_aarg",
+  "column_break_lwub",
+  "add_items",
+  "section_break_oakq",
+  "items_details",
+  "section_break_cfff",
+  "column_break_ylev",
+  "column_break_oriy",
+  "column_break_ecpx",
+  "update_documents",
+  "column_break_fckp",
+  "submit_document"
+ ],
+ "fields": [
+  {
+   "description": "1. Fill all the relevant details received in the Customer Purchase Order in the fields given below.",
+   "fieldname": "customer_purchase_order_details_section",
+   "fieldtype": "Section Break",
+   "label": "Customer Purchase Order Details"
+  },
+  {
+   "default": "JTV",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "placeholder": "Input",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Link",
+   "label": "USA Buyer",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Customer Departments"
+  },
+  {
+   "fieldname": "customer_po_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer PO Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_xwji",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_po_date",
+   "fieldtype": "Date",
+   "label": "Customer PO Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Delivery Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nUpdated\nPartially Updated\nSubmitted\nPartially Submitted"
+  },
+  {
+   "fieldname": "column_break_nqfe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_po_items",
+   "fieldtype": "Int",
+   "label": "PO Qty"
+  },
+  {
+   "fieldname": "total_po_amount",
+   "fieldtype": "Currency",
+   "label": "PO Amount",
+   "precision": "2"
+  },
+  {
+   "fieldname": "po_attachment",
+   "fieldtype": "Attach",
+   "label": "PO Attachment"
+  },
+  {
+   "fieldname": "column_break_bofw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "value_comparision",
+   "fieldtype": "HTML",
+   "label": "Value Comparision"
+  },
+  {
+   "description": "2. Use \"Add Items to the List\" button to add the Items to the Table below.",
+   "fieldname": "section_break_qhib",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_iqdg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qyna",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fetch_details",
+   "fieldtype": "Button",
+   "label": "Fetch Details"
+  },
+  {
+   "fieldname": "column_break_aarg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_lwub",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Get SKUs from SOs in Draft.",
+   "fieldname": "add_items",
+   "fieldtype": "Button",
+   "label": "Add Items to the List"
+  },
+  {
+   "description": "3. Check the field values and make necessary changes, if any.",
+   "fieldname": "section_break_oakq",
+   "fieldtype": "Section Break",
+   "label": "Items and Sales Orders"
+  },
+  {
+   "fieldname": "items_details",
+   "fieldtype": "Table",
+   "label": "Items Details",
+   "options": "PO Header Items"
+  },
+  {
+   "description": "4. Use \"Update Documents\" button to update and submit the relevant documents in the Draft.",
+   "fieldname": "section_break_cfff",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ylev",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_oriy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ecpx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "To update Item, BOM, SO & PO.",
+   "fieldname": "update_documents",
+   "fieldtype": "Button",
+   "label": "Update Documents"
+  },
+  {
+   "fieldname": "column_break_fckp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "To Submit BOM and SO.",
+   "fieldname": "submit_document",
+   "fieldtype": "Button",
+   "label": "Submit Document"
+  }
+ ],
+ "grid_page_length": 50,
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-07-29 15:05:02.867030",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "PO Header",
+ "naming_rule": "By fieldname",
+ "owner": "ameerbabu@iwex.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Sales Master Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "customer_po_id",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer_po_id"
+}

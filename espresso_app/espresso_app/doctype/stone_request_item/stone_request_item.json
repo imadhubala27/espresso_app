@@ -1,0 +1,337 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-05-15 15:28:56.399644",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "stone_requirement_section",
+  "item_image",
+  "delivery_warehouse",
+  "column_break_ddrv",
+  "item_code",
+  "item_name",
+  "qty",
+  "uom",
+  "column_break_fjsd",
+  "eta",
+  "ship_date",
+  "material_id",
+  "item_group",
+  "stone_deal_section",
+  "stone_batch",
+  "received_qty",
+  "accepted_qty",
+  "rejected_qty",
+  "stock_qty",
+  "column_break_sovl",
+  "color_match",
+  "weight_match",
+  "size_match",
+  "grade_match",
+  "inspection_date",
+  "column_break_akiu",
+  "inspector",
+  "inspection_status",
+  "comparison",
+  "stone_specifications_section",
+  "gemstone",
+  "country_of_origin",
+  "column_break_fayv",
+  "form",
+  "composition",
+  "column_break_thrd",
+  "dimensions",
+  "shape",
+  "section_break_sgfl",
+  "description",
+  "connections_section",
+  "material_request",
+  "order_qty",
+  "column_break_tddy",
+  "purchase_invoice",
+  "purchased_qty"
+ ],
+ "fields": [
+  {
+   "fieldname": "stone_requirement_section",
+   "fieldtype": "Section Break",
+   "label": "Stone Requirement"
+  },
+  {
+   "columns": 1,
+   "fieldname": "item_image",
+   "fieldtype": "Image",
+   "label": "Item Image"
+  },
+  {
+   "fieldname": "delivery_warehouse",
+   "fieldtype": "Link",
+   "label": "Delivery Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_ddrv",
+   "fieldtype": "Column Break",
+   "in_standard_filter": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name"
+  },
+  {
+   "columns": 1,
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Required Qty",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "default": "Piece",
+   "fetch_from": "item_code.stock_uom",
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_fjsd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "eta",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "ETA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ship_date",
+   "fieldtype": "Date",
+   "label": "Ship Date",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item_code.custom_material_id",
+   "fieldname": "material_id",
+   "fieldtype": "Data",
+   "label": "Material ID"
+  },
+  {
+   "fetch_from": "item_code.item_group",
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "label": "Item Group",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "stone_deal_section",
+   "fieldtype": "Section Break",
+   "label": "Stone Deal"
+  },
+  {
+   "fieldname": "stone_batch",
+   "fieldtype": "Link",
+   "label": "Stone Batch",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "received_qty",
+   "fieldtype": "Float",
+   "label": "Received Qty"
+  },
+  {
+   "fieldname": "accepted_qty",
+   "fieldtype": "Float",
+   "label": "Accepted Qty"
+  },
+  {
+   "fieldname": "rejected_qty",
+   "fieldtype": "Float",
+   "label": "Rejected Qty"
+  },
+  {
+   "fieldname": "stock_qty",
+   "fieldtype": "Float",
+   "label": "Stock Qty"
+  },
+  {
+   "fieldname": "column_break_sovl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "color_match",
+   "fieldtype": "Select",
+   "label": "Color Match",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "weight_match",
+   "fieldtype": "Select",
+   "label": "Weight Match",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "size_match",
+   "fieldtype": "Select",
+   "label": "Size Match",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "grade_match",
+   "fieldtype": "Select",
+   "label": "Grade Match",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "inspection_date",
+   "fieldtype": "Date",
+   "label": "Inspection Date"
+  },
+  {
+   "fieldname": "column_break_akiu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspector",
+   "fieldtype": "Link",
+   "label": "Inspector",
+   "options": "User"
+  },
+  {
+   "fieldname": "inspection_status",
+   "fieldtype": "Select",
+   "label": "Inspection Status",
+   "options": "\nPending\nCompleted"
+  },
+  {
+   "fieldname": "comparison",
+   "fieldtype": "HTML",
+   "label": "Comparison"
+  },
+  {
+   "fieldname": "stone_specifications_section",
+   "fieldtype": "Section Break",
+   "label": "Stone Specifications"
+  },
+  {
+   "fetch_from": "item_code.custom_gemstone",
+   "fieldname": "gemstone",
+   "fieldtype": "Data",
+   "label": "Gemstone",
+   "options": "Gemstones"
+  },
+  {
+   "fetch_from": "item_code.country_of_origin",
+   "fieldname": "country_of_origin",
+   "fieldtype": "Data",
+   "label": "Country of Origin"
+  },
+  {
+   "fieldname": "column_break_fayv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "form",
+   "fieldtype": "Data",
+   "label": "Form"
+  },
+  {
+   "fieldname": "composition",
+   "fieldtype": "Data",
+   "label": "Composition"
+  },
+  {
+   "fieldname": "column_break_thrd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dimensions",
+   "fieldtype": "Data",
+   "label": "Dimensions"
+  },
+  {
+   "fieldname": "shape",
+   "fieldtype": "Data",
+   "label": "Shape"
+  },
+  {
+   "fieldname": "section_break_sgfl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "columns": 3,
+   "fetch_from": "item_code.description",
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "in_list_view": 1,
+   "label": "Description"
+  },
+  {
+   "fieldname": "connections_section",
+   "fieldtype": "Section Break",
+   "label": "Connections"
+  },
+  {
+   "fieldname": "material_request",
+   "fieldtype": "Link",
+   "label": "Material Request",
+   "options": "Material Request"
+  },
+  {
+   "fieldname": "order_qty",
+   "fieldtype": "Float",
+   "label": "Order Qty",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_tddy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "purchase_invoice",
+   "fieldtype": "Link",
+   "label": "Purchase Invoice",
+   "options": "Purchase Invoice"
+  },
+  {
+   "fieldname": "purchased_qty",
+   "fieldtype": "Float",
+   "label": "Purchased Qty"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-07-29 15:00:31.837207",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "Stone Request Item",
+ "owner": "ameerbabu@iwex.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

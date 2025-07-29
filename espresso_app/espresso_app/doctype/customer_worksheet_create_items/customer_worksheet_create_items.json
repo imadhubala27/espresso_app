@@ -1,0 +1,328 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-05-08 22:39:25.578790",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_group",
+  "item_name",
+  "column_break_aojn",
+  "custom_customer_sku",
+  "custom_vendor_product_id",
+  "column_break_dmvs",
+  "item_code",
+  "image",
+  "section_break_neel",
+  "gemstone",
+  "form",
+  "column_break_reoc",
+  "shape",
+  "brand",
+  "column_break_qqfe",
+  "composition",
+  "dimensions",
+  "metal_specifications_section",
+  "metal_group",
+  "column_break_glqr",
+  "purity_multiplier",
+  "chain_specifications_section",
+  "custom_clasp",
+  "custom_extender",
+  "custom_diamond_cut",
+  "column_break_gpmj",
+  "custom_chain_length",
+  "custom_chain_length_uom",
+  "finding_specifications_section",
+  "finding_group",
+  "column_break_sntc",
+  "finding_type",
+  "plating_specifications_section",
+  "plating_group",
+  "metal_purity_plating",
+  "column_break_lmxg",
+  "plating_thickness",
+  "thickness_uom",
+  "section_break_lctk",
+  "hsnsac",
+  "column_break_gaat",
+  "color",
+  "column_break_inse",
+  "stock_uom",
+  "description_section",
+  "description"
+ ],
+ "fields": [
+  {
+   "fetch_from": "item_code.item_group",
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Group",
+   "options": "Item Group",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "column_break_aojn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_code.custom_customer_sku",
+   "fieldname": "custom_customer_sku",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer's SKU"
+  },
+  {
+   "fetch_from": "item_code.custom_vendor_product_id",
+   "fieldname": "custom_vendor_product_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Vendor Product ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_dmvs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Image",
+   "label": "Image"
+  },
+  {
+   "fieldname": "section_break_neel",
+   "fieldtype": "Section Break",
+   "label": "Stone/Pearl Specifications"
+  },
+  {
+   "fieldname": "gemstone",
+   "fieldtype": "Link",
+   "label": "Gemstone",
+   "options": "Gemstones"
+  },
+  {
+   "fieldname": "form",
+   "fieldtype": "Select",
+   "label": "Form",
+   "options": "\nCab\nCarving\nFreeform\nBead"
+  },
+  {
+   "fieldname": "column_break_reoc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shape",
+   "fieldtype": "Link",
+   "label": "Shape",
+   "options": "Shapes"
+  },
+  {
+   "fieldname": "brand",
+   "fieldtype": "Link",
+   "label": "Brand",
+   "options": "Brand"
+  },
+  {
+   "fieldname": "column_break_qqfe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.item_group == \"Stone\" || doc.item_group == \"Pearl\" || doc.item_group == \"Pearl Strand\" || doc.item_group == \"Bead\";",
+   "fieldname": "composition",
+   "fieldtype": "Select",
+   "label": "Composition",
+   "options": "\nNatural\nLab Created\nTriplet\nMosaic\nDoublet\nReconstituted\nSynthetic\nCultured\nCompressed\nSimulant\nMosaic Triplet\nMan Made\nLab Grown\nMatrix\nComposite"
+  },
+  {
+   "depends_on": "eval:doc.item_group == \"Stone\" || doc.item_group == \"Pearl\" || doc.item_group == \"Pearl Strand\" ;",
+   "fieldname": "dimensions",
+   "fieldtype": "Data",
+   "label": "Dimensions"
+  },
+  {
+   "fieldname": "metal_specifications_section",
+   "fieldtype": "Section Break",
+   "label": "Metal Specifications"
+  },
+  {
+   "depends_on": "eval:doc.item_group == \"Stone\" || doc.item_group == \"Bead\";",
+   "fieldname": "metal_group",
+   "fieldtype": "Select",
+   "label": "Metal Group",
+   "options": "\nGold\nSilver\nPlatinum\nCopper\nStone Only\nBase Metal/Alloy\nSteel\nBronze\nBrass",
+   "sort_options": 1
+  },
+  {
+   "fieldname": "column_break_glqr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "doc.item_group == \"Metal\";",
+   "fieldname": "purity_multiplier",
+   "fieldtype": "Data",
+   "label": "Purity Multiplier"
+  },
+  {
+   "fieldname": "chain_specifications_section",
+   "fieldtype": "Section Break",
+   "label": "Chain Specifications"
+  },
+  {
+   "fieldname": "custom_clasp",
+   "fieldtype": "Select",
+   "label": "Clasp",
+   "options": "\nBolo Ball\nBolo Donut\nLobster Clasp\nSpring Ring Clasp"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_extender",
+   "fieldtype": "Check",
+   "label": "Extender"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_diamond_cut",
+   "fieldtype": "Check",
+   "label": "Diamond Cut"
+  },
+  {
+   "fieldname": "column_break_gpmj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_chain_length",
+   "fieldtype": "Float",
+   "label": "Chain Length"
+  },
+  {
+   "fieldname": "custom_chain_length_uom",
+   "fieldtype": "Select",
+   "label": "Chain Length UOM",
+   "options": "\nInch\nmm\ncm"
+  },
+  {
+   "fieldname": "finding_specifications_section",
+   "fieldtype": "Section Break",
+   "label": "Finding Specifications"
+  },
+  {
+   "fieldname": "finding_group",
+   "fieldtype": "Select",
+   "label": "Finding Group",
+   "options": "\nLock\nChain Segment\nEarring\nUnder Gallery\nMagnet\nCord\nBrooch\nSteel\nNecklace\nBracelet\nPendant\nChain"
+  },
+  {
+   "fieldname": "column_break_sntc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "finding_type",
+   "fieldtype": "Select",
+   "label": "Finding Type",
+   "options": "\nBacks (Nuts)\nBolo\nBolt Ring Clasp\nBox Clasp\nBraided Leather Cord with Ends\nBrooch Pin\nCord Ends\nDancing Movement\nEnhancer\nExtension Chain\nFChainTemp\nFish Hook\nFish Wire\nHoop\nJBack\nJump Ring\nLever Back\nLobster Clasp\nMagnet Clasp\nOmega Clip\nPearl Clasp\nPearl Cup for Pendant\nPearl Cup only (No post)\nPearl Cup with Post\nPost\nPush Gate Clasp\nS Hook Clasp\nSaddle Back\nSafety Lock\nScrew Back\nSilicon Back\nSpring\nSprint Ring Clasp\nStud\nTAG\nToggle Clasp\nWire"
+  },
+  {
+   "fieldname": "plating_specifications_section",
+   "fieldtype": "Section Break",
+   "label": "Plating Specifications"
+  },
+  {
+   "fieldname": "plating_group",
+   "fieldtype": "Select",
+   "label": "Plating Group",
+   "options": "\nCopper\nGold\nPalladium\nPlatinum\nRhodium\nSilver\nPlatineve\nEnamel\nOxidization\nNano Protection\nEpoxy\nBronze"
+  },
+  {
+   "fieldname": "metal_purity_plating",
+   "fieldtype": "Select",
+   "label": "Metal Purity (Plating)",
+   "options": "\n18K\n14K"
+  },
+  {
+   "fieldname": "column_break_lmxg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "plating_thickness",
+   "fieldtype": "Float",
+   "label": "Plating Thickness"
+  },
+  {
+   "fieldname": "thickness_uom",
+   "fieldtype": "Select",
+   "label": "Thickness UoM",
+   "options": "\nMicron\nFlash\nMils"
+  },
+  {
+   "fieldname": "section_break_lctk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "hsnsac",
+   "fieldtype": "Link",
+   "label": "HSN/SAC",
+   "options": "GST HSN Code"
+  },
+  {
+   "fieldname": "column_break_gaat",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.item_group == \"Stone\" || doc.item_group == \"Pearl\" || doc.item_group == \"Pearl Strand\" || doc.item_group == \"Bead\" || doc.item_group==\"Metal\";",
+   "fieldname": "color",
+   "fieldtype": "Select",
+   "label": "Color",
+   "options": "\nColor Change\nColor Shift\nBlack\nBlue\nBrown\nGray\nGreen\nMulti color\nOrange\nPink\nPurple\nRed\nWhite\nYellow\nBi-color"
+  },
+  {
+   "fieldname": "column_break_inse",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stock_uom",
+   "fieldtype": "Link",
+   "label": "Default Stock UOM",
+   "options": "UOM"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-07-29 15:05:04.457534",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "Customer Worksheet Create Items",
+ "owner": "ameerbabu@iwex.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

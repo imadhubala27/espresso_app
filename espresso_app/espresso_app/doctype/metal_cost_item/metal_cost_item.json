@@ -1,0 +1,100 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-05-22 17:27:59.516078",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "metal",
+  "rate_per_ounce",
+  "currency",
+  "column_break_wpyn",
+  "source",
+  "rate_per_gram",
+  "column_break_olzy",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "metal",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Metal",
+   "options": "\nGold\nSilver\nPlatinum",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "rate_per_ounce",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Rate per Troy Ounce",
+   "no_copy": 1,
+   "non_negative": 1,
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "default": "USD",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_wpyn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "default": "Kitco",
+   "fieldname": "source",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Source",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "rate_per_gram",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Rate per Gram",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_olzy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 2,
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Remarks"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-07-29 15:05:04.967623",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "Metal Cost Item",
+ "owner": "ameerbabu@iwex.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,227 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
+ "creation": "2025-06-30 13:26:35.167023",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "customer_purchase_order",
+  "column_break_aesd",
+  "carton_no",
+  "column_break_pgsu",
+  "item_count",
+  "naming_series",
+  "carton_details_section",
+  "length",
+  "column_break_ctbw",
+  "width",
+  "column_break_lqfd",
+  "height",
+  "column_break_tlir",
+  "weight",
+  "section_break_ippg",
+  "items",
+  "section_break_clxj",
+  "net_weight",
+  "net_weight_uom",
+  "column_break_pbae",
+  "gross_weight",
+  "gross_weight_uom",
+  "section_break_uitz",
+  "sales_invoice"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "customer_purchase_order",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Customer Purchase Order",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_aesd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "carton_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Carton No",
+   "options": "Shipment Parcel Template"
+  },
+  {
+   "fieldname": "column_break_pgsu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Item Count",
+   "read_only": 1
+  },
+  {
+   "default": "SPS-.YY.MM.DD.##",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "SPS-.YY.MM.DD.##"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "carton_details_section",
+   "fieldtype": "Section Break",
+   "label": "Carton Details"
+  },
+  {
+   "fetch_from": "carton_no.length",
+   "fieldname": "length",
+   "fieldtype": "Float",
+   "label": "Length (cm)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_ctbw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "carton_no.width",
+   "fieldname": "width",
+   "fieldtype": "Float",
+   "label": "Width (cm)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_lqfd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "carton_no.height",
+   "fieldname": "height",
+   "fieldtype": "Float",
+   "label": "Height (cm)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_tlir",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "carton_no.weight",
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Carton Weight (kg)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_ippg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Shipment Packing Slip Items"
+  },
+  {
+   "fieldname": "section_break_clxj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Total weight of the Items excluding Carton",
+   "fieldname": "net_weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Net Weight",
+   "precision": "2"
+  },
+  {
+   "fieldname": "net_weight_uom",
+   "fieldtype": "Link",
+   "label": "Net Weight UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "column_break_pbae",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Gross weight of the Carton. Net weight + Carton weight.",
+   "fieldname": "gross_weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Gross Weight",
+   "precision": "2"
+  },
+  {
+   "fieldname": "gross_weight_uom",
+   "fieldtype": "Link",
+   "label": "Gross Weight UOM",
+   "options": "UOM"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_uitz",
+   "fieldtype": "Section Break",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Sales Invoice",
+   "link_fieldname": "name"
+  },
+  {
+   "link_doctype": "PO Header",
+   "link_fieldname": "name"
+  }
+ ],
+ "modified": "2025-07-29 15:05:00.222241",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "Shipment Packing Slip",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "ameerbabu@iwex.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer_purchase_order"
+}

@@ -1,0 +1,32 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-23 09:45:08.451892",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "stone"
+ ],
+ "fields": [
+  {
+   "fieldname": "stone",
+   "fieldtype": "Link",
+   "label": "Stone",
+   "options": "Stone Treatment"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-07-29 15:05:03.738908",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "Stone",
+ "owner": "support@iwex.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

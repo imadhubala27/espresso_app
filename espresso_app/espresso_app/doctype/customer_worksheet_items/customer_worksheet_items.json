@@ -1,0 +1,247 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-05-08 11:02:02.750816",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "image",
+  "image_view",
+  "company",
+  "delivery_warehouse",
+  "column_break_ddrv",
+  "item_code",
+  "item_name",
+  "qty",
+  "uom",
+  "custom_vendor_product_id",
+  "column_break_fjsd",
+  "order_type",
+  "eta",
+  "item_group",
+  "size",
+  "section_break_wusa",
+  "rate",
+  "column_break_uzgz",
+  "amount",
+  "section_break_sgfl",
+  "description",
+  "reference_section",
+  "default_bom",
+  "column_break_iuzg",
+  "sales_order_no",
+  "column_break_oeam",
+  "sales_order_status"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fetch_from": "item_code.image",
+   "fetch_if_empty": 1,
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Image",
+   "options": "\n"
+  },
+  {
+   "columns": 1,
+   "fetch_from": "item_code.image",
+   "fieldname": "image_view",
+   "fieldtype": "Image",
+   "label": "Image View",
+   "options": "image"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "delivery_warehouse",
+   "fieldtype": "Link",
+   "label": "Delivery Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_ddrv",
+   "fieldtype": "Column Break",
+   "in_standard_filter": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name"
+  },
+  {
+   "columns": 1,
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Qty",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "default": "Piece",
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fetch_from": "item_code.custom_vendor_product_id",
+   "fieldname": "custom_vendor_product_id",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Vendor PID",
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_fjsd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "order_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Order Type",
+   "no_copy": 1,
+   "options": "\nCustom\nDebut\nQA Sample\nReorder\nSample\nStone\nWaitlist",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "eta",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "ETA",
+   "mandatory_depends_on": "eval:doc.order_type != \"Sample\"",
+   "no_copy": 1
+  },
+  {
+   "fetch_from": "item_code.item_group",
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "label": "Item Group",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Select",
+   "label": "Size",
+   "no_copy": 1,
+   "options": "\n2\n3\n4\n4.5\n5\n6\n6.25\n6.5\n6.75\n7\n7.25\n7.5\n7.75\n8\n8.25\n8.5\n9\n10\n10.5\n11\n12\n13\n14\n16\n17\n17.5\n18\n18.25\n19\n19.5\n20\n21\n22\n24\n26\n30\n32\n33\n36\n50"
+  },
+  {
+   "fieldname": "section_break_wusa",
+   "fieldtype": "Section Break",
+   "hide_border": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Rate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_uzgz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_sgfl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "columns": 3,
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "in_list_view": 1,
+   "label": "Description"
+  },
+  {
+   "fieldname": "reference_section",
+   "fieldtype": "Section Break",
+   "label": "Reference"
+  },
+  {
+   "columns": 1,
+   "fetch_if_empty": 1,
+   "fieldname": "default_bom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Default BOM",
+   "options": "BOM"
+  },
+  {
+   "fieldname": "column_break_iuzg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "sales_order_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sales Order",
+   "no_copy": 1,
+   "options": "Sales Order",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_oeam",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "sales_order.status",
+   "fieldname": "sales_order_status",
+   "fieldtype": "Data",
+   "label": "Sales Order Status",
+   "no_copy": 1,
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-07-29 15:05:02.596889",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "Customer Worksheet Items",
+ "owner": "ameerbabu@iwex.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

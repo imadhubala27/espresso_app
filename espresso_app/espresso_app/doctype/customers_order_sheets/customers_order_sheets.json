@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-05-06 20:06:14.382609",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_yuqr",
+  "company",
+  "customer",
+  "column_break_zstx",
+  "date_ordersheet_received",
+  "file_attachment",
+  "section_break_eati",
+  "item"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_yuqr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_zstx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date_ordersheet_received",
+   "fieldtype": "Date",
+   "label": "Date Received",
+   "reqd": 1
+  },
+  {
+   "fieldname": "file_attachment",
+   "fieldtype": "Attach",
+   "label": "File Attachment"
+  },
+  {
+   "fieldname": "section_break_eati",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Table",
+   "label": "Item",
+   "options": "Customer Order Sheet Items"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-07-29 15:05:05.410220",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "Customers Order Sheets",
+ "owner": "sunil.khinvasara@jtv.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

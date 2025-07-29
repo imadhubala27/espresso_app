@@ -1,0 +1,211 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-30 13:33:02.972392",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "carton_id",
+  "column_break_ppbu",
+  "carton_size",
+  "column_break_zgmx",
+  "net_weight",
+  "column_break_bndd",
+  "weight_uom",
+  "section_break_fihb",
+  "item_code",
+  "batch_no",
+  "column_break_tnaz",
+  "qty",
+  "uom",
+  "section_break_knpv",
+  "item_name",
+  "description",
+  "carton_details_section",
+  "length",
+  "column_break_wuav",
+  "width",
+  "column_break_jgzc",
+  "height",
+  "column_break_kbhr",
+  "weight"
+ ],
+ "fields": [
+  {
+   "fieldname": "carton_id",
+   "fieldtype": "Data",
+   "label": "Carton ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ppbu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "carton_size",
+   "fieldtype": "Link",
+   "label": "Carton Size",
+   "options": "Shipment Parcel Template",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_zgmx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "net_weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Net Weight",
+   "no_copy": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_bndd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "weight_uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Weight UOM",
+   "no_copy": 1,
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_fihb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "columns": 2,
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "label": "Item Code",
+   "no_copy": 1,
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch No",
+   "no_copy": 1,
+   "options": "Batch"
+  },
+  {
+   "fieldname": "column_break_tnaz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty",
+   "no_copy": 1
+  },
+  {
+   "columns": 1,
+   "fetch_from": "item_code.sales_uom",
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UOM",
+   "no_copy": 1,
+   "options": "UOM"
+  },
+  {
+   "fieldname": "section_break_knpv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "columns": 1,
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "no_copy": 1
+  },
+  {
+   "columns": 3,
+   "fetch_from": "item_code.description",
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Description",
+   "max_height": "80px",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "carton_details_section",
+   "fieldtype": "Section Break",
+   "label": "Carton Details"
+  },
+  {
+   "fetch_from": "carton_size.length",
+   "fieldname": "length",
+   "fieldtype": "Float",
+   "label": "Length",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_wuav",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "carton_size.width",
+   "fieldname": "width",
+   "fieldtype": "Float",
+   "label": "Width",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_jgzc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "carton_size.height",
+   "fieldname": "height",
+   "fieldtype": "Float",
+   "label": "Height",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_kbhr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "carton_size.weight",
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight",
+   "non_negative": 1,
+   "precision": "2"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-07-29 15:05:00.678931",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "Shipment Packing Slip Items",
+ "owner": "ameerbabu@iwex.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

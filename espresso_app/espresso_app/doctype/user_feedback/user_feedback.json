@@ -1,0 +1,302 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
+ "creation": "2025-06-24 10:41:54.576182",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_migm",
+  "feedback_type",
+  "priority",
+  "naming_series",
+  "column_break_jjgv",
+  "document_type",
+  "document_name",
+  "user",
+  "column_break_xffd",
+  "date",
+  "time",
+  "web_browser",
+  "rating_section_section",
+  "overall_experience",
+  "ease_of_use",
+  "what_you_liked_most",
+  "column_break_djoa",
+  "performance_speed",
+  "feature_completeness",
+  "what_needs_improvement",
+  "feedback_details_section",
+  "subject",
+  "description",
+  "column_break_csru",
+  "screenshots",
+  "steps_to_reproduce",
+  "action_tab",
+  "tracking_and_management_section",
+  "status",
+  "assigned_to",
+  "resolved_date",
+  "age",
+  "column_break_hchs",
+  "resolution_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_migm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "feedback_type",
+   "fieldtype": "Select",
+   "label": "Feedback Type",
+   "options": "\nBug/Issue\nSuggestion\nComplaint\nGeneral Feedback\nFeature Request\nRating Only",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.feedback_type != \"Rating Only\"",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "\nLow\nMedium\nHigh\nCritical"
+  },
+  {
+   "default": "UFB-.YY.MM.DD.##",
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "UFB-.YY.MM.DD.##",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_jjgv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Select",
+   "label": "Document Type",
+   "options": "\nCustomer Worksheet\nPO Header\nSales Order\nPurchase Order\nPurchase Invoice\nSales Invoice\nItem\nItem Group\nItem Specs\nBOM\nCustomer\nSupplier\nAddress\nContact\nDepartment\nPrint Format\nAttachment\nUnknown",
+   "reqd": 1
+  },
+  {
+   "fieldname": "document_name",
+   "fieldtype": "Data",
+   "label": "Document Name (ID/No)"
+  },
+  {
+   "default": "User",
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_xffd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "default": "Now",
+   "fieldname": "time",
+   "fieldtype": "Time",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Time",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:(doc.feedback_type != \"Rating Only\" || doc.feedback_type != \"General Feedback\")",
+   "fieldname": "web_browser",
+   "fieldtype": "Select",
+   "label": "Web Browser",
+   "mandatory_depends_on": "eval:(doc.feedback_type != \"Rating Only\" || doc.feedback_type != \"General Feedback\")",
+   "options": "\nARC Browser\nBrave Browser\nDuckDuckGo Browser\nGoogle Chrome\nMicrosoft Edge\nMozilla Firefox\nOpera\nPale Moon\nSafari\nSamsung Internet\nTor Browser\nUC Browser\nVivaldi\nWaterfox\nYandex Browser"
+  },
+  {
+   "depends_on": "eval:doc.feedback_type == \"Rating Only\"",
+   "fieldname": "rating_section_section",
+   "fieldtype": "Section Break",
+   "label": "Rating Section"
+  },
+  {
+   "fieldname": "overall_experience",
+   "fieldtype": "Rating",
+   "label": "Overall Experience"
+  },
+  {
+   "fieldname": "ease_of_use",
+   "fieldtype": "Rating",
+   "label": "Ease of Use"
+  },
+  {
+   "fieldname": "what_you_liked_most",
+   "fieldtype": "Small Text",
+   "label": "What You Liked Most"
+  },
+  {
+   "fieldname": "column_break_djoa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "performance_speed",
+   "fieldtype": "Rating",
+   "label": "Performance Speed"
+  },
+  {
+   "fieldname": "feature_completeness",
+   "fieldtype": "Rating",
+   "label": "Feature Completeness"
+  },
+  {
+   "fieldname": "what_needs_improvement",
+   "fieldtype": "Small Text",
+   "label": "What Needs Improvement"
+  },
+  {
+   "depends_on": "eval:doc.feedback_type != \"Rating Only\"",
+   "fieldname": "feedback_details_section",
+   "fieldtype": "Section Break",
+   "label": "Feedback Details"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "Subject"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "column_break_csru",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "screenshots",
+   "fieldtype": "Attach",
+   "label": "Screenshot/Video"
+  },
+  {
+   "fieldname": "steps_to_reproduce",
+   "fieldtype": "Text Editor",
+   "label": "Steps to Reproduce"
+  },
+  {
+   "fieldname": "action_tab",
+   "fieldtype": "Tab Break",
+   "label": "Action"
+  },
+  {
+   "depends_on": "eval:doc.feedback_type != \"Rating Only\"",
+   "fieldname": "tracking_and_management_section",
+   "fieldtype": "Section Break",
+   "label": "Tracking & Management"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Open\nIn Progress\nResolved\nClosed\nWon't Fix\nAcknowledged"
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "label": "Assigned To",
+   "options": "User"
+  },
+  {
+   "fieldname": "resolved_date",
+   "fieldtype": "Date",
+   "label": "Resolved Date",
+   "mandatory_depends_on": "eval:doc.status == \"Resolved\""
+  },
+  {
+   "depends_on": "eval:(doc.feedback_type == \"Bug/Issue\" || doc.feedback_type == \"Complaint\" || doc.feedback_type == \"Feature Request\")",
+   "fieldname": "age",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Age",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_hchs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "resolution_notes",
+   "fieldtype": "Text",
+   "label": "Resolution Notes"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-07-29 15:05:03.467860",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "User Feedback",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "ameerbabu@iwex.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "naming_series",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "Red",
+   "title": "Open"
+  },
+  {
+   "color": "Light Blue",
+   "title": "In Progress"
+  },
+  {
+   "color": "Green",
+   "title": "Resolved"
+  },
+  {
+   "color": "Gray",
+   "title": "Closed"
+  },
+  {
+   "color": "Blue",
+   "title": "Won't Fix"
+  },
+  {
+   "color": "Yellow",
+   "title": "Acknowledged"
+  }
+ ],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

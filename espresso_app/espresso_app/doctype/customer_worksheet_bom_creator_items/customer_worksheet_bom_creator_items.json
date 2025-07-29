@@ -1,0 +1,478 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-04 07:03:39.974041",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "item_name",
+  "custom_item_group",
+  "custom_our_responsibility",
+  "custom_supplier",
+  "column_break_3",
+  "bom_no",
+  "is_stock_item",
+  "bom_item_spec",
+  "section_break_kkrl",
+  "column_break_zyxe",
+  "fetch_gemstone",
+  "custom_section_break_bpde9",
+  "custom_gemstone",
+  "custom_cut",
+  "custom_country_of_origin",
+  "custom_coutry",
+  "custom_column_break_xwobd",
+  "custom_stone_treatment_list",
+  "custom_stone_pieces",
+  "custom_avg_carat_weight",
+  "custom_sku_weight",
+  "custom_column_break_bx6yp",
+  "custom_setting_type",
+  "custom_grade",
+  "custom_merch_color__attribute",
+  "custom_section_break_ceqil",
+  "custom_metal_weight",
+  "custom_column_break_ui0rq",
+  "custom_sku_metal_weight",
+  "custom_column_break_y3jq7",
+  "custom_metal_group",
+  "column_break_dasv",
+  "custom_with_jback",
+  "custom_findingchain_specs",
+  "custom_length",
+  "custom_column_break_srscw",
+  "custom_weight_perpiece",
+  "custom_column_break_szdl3",
+  "quantity_and_rate",
+  "column_break_ezrr",
+  "uom",
+  "qty",
+  "custom_quantity",
+  "selling_price_column",
+  "custom_selling_rate",
+  "custom_selling_amount",
+  "col_break2",
+  "rate",
+  "amount",
+  "custom_stock_details",
+  "custom_ext_qty_required",
+  "custom_column_break_fdozc",
+  "custom_oh",
+  "custom_column_break_ahbrc",
+  "custom_net_balance_required",
+  "section_break_5",
+  "description",
+  "col_break1",
+  "image",
+  "image_view"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "columns": 3,
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "columns": 3,
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "fetch_from": "item_code.item_group",
+   "fieldname": "custom_item_group",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "Item Group",
+   "translatable": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "0",
+   "fieldname": "custom_our_responsibility",
+   "fieldtype": "Check",
+   "label": "Our Responsibility"
+  },
+  {
+   "fieldname": "custom_supplier",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:!doc.do_not_explode",
+   "fieldname": "bom_no",
+   "fieldtype": "Link",
+   "label": "BOM No",
+   "options": "BOM",
+   "print_width": "150px",
+   "width": "150px"
+  },
+  {
+   "default": "0",
+   "fetch_from": "item_code.is_stock_item",
+   "fieldname": "is_stock_item",
+   "fieldtype": "Check",
+   "label": "Is Stock Item",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "description": "Link to BOM Item Specification",
+   "fieldname": "bom_item_spec",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "BOM Item Spec",
+   "options": "BOM Item Spec",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_kkrl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.custom_item_group == \"Stone\" || doc.custom_item_group == \"Pearl\" || doc.custom_item_group == \"Pearl Strand\" || doc.custom_item_group == \"Bead Strand\" || doc.custom_item_group == \"Bead Strand\" || doc.custom_item_group == \"Bead\"  ",
+   "fieldname": "column_break_zyxe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fetch_gemstone",
+   "fieldtype": "Button",
+   "label": "Fetch Gemstone"
+  },
+  {
+   "depends_on": "eval:doc.custom_item_group == \"Stone\" || doc.custom_item_group == \"Pearl\" || doc.custom_item_group == \"Pearl Strand\" || doc.custom_item_group == \"Bead Strand\" || doc.custom_item_group == \"Bead Strand\" || doc.custom_item_group == \"Bead\"  ",
+   "fieldname": "custom_section_break_bpde9",
+   "fieldtype": "Section Break",
+   "label": "Stone Specs"
+  },
+  {
+   "fetch_from": "item_code.custom_gemstone",
+   "fieldname": "custom_gemstone",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "label": "Gemstone",
+   "options": "Gemstones"
+  },
+  {
+   "columns": 1,
+   "fieldname": "custom_cut",
+   "fieldtype": "Select",
+   "in_global_search": 1,
+   "label": "Cut",
+   "options": "\n100 Facet\n101 Facet\n105 Facet Cut\n12 Sided\n145 Facet\n2 Flat\n2 Flat Holo\n7 Sided\n8 Sides Even Cut\n8 Sides Even Cut (EM)\nAnti\nApertura\nArrow Cut\nAsscher Cut\nBall\nBaroque\nBarrel\nBarrian Cut\nBead\nBead Ball\nBead Full Drill\nBead Illusion\nBella 10 Sides\nBella 12 Sides\nBella 8 Sides\nBend\nBlended\nBotton\nBridge\nBrilliant Cut\nBriolette\nBriolite-Both Side Cheker\nBucket Bead\nBuff Top\nBuff Top Concave Cut\nBuff Top Spinfire Cut\nBuff Top Swirl Cut\nButton\nCab\nCab Flat\nCab holo\nCab with Hole\nCAB/CKB\nCambered\nCameo\nCapsule\nCarved\nCarving Flower\nCastle\nCharizma (TM)\nCHB\nChecker\nChecker Board\nCheckerboard Flat Bottom\nChips\nCircle\nCK/CAB\nCKB\nCKB Flat Bottom\nCKB/Concave Cut\nCKBD\nCoin\nConcave\nConcave Cut\nConvex\nCrazy Fire\nCriss Cut\nCross Cut\nCrystal\nCustom\nCutting star\nCylinder\nD Shape\nDeeply Aqua Cut\nDiamond Cut\nDisc\nDome C/B\nDome CKB\nDonut\nDouble Briolette\nDouble Cab\nDouble CKB\nDouble Flat\nDrill thru\nDrop\nDrop Circle\nEdge Cut\nEight Hearts and Eight Arrows\nEliminating\nEmanating Star Cut\nEmerald Cut\nEqual Side\nEuropean Cut\nF/S\nFacet Cab\nFaceted\nFancy Cab\nFancy Cut\nFire Work\nFit Mount\nFlat\nFlat Bottom\nFlat Bottom High Dome Checker board\nFlower\nFlower \"T\"\nFlower Craving\nFlower Cut\nFreeForm\nFull Cut\nFull Drilled\nGalaxy\nGlitter Mine Cut\nGraduated\nHalf Drill\nHalf Holo CAB\nHeart & Arrow\nHeishi\nHelm Cut\nHint Cut\nHoney Comb Cut\nIce Flower\nIcon\nIdol Blue\nIllusion\nIn Line Crown\nInferno\nInlay\nIOTA\nIrregular\nKadenze Cut\nKatzenberg Cut\nKepler Cut\nKianga Cut\nKorean Cut\nLady's Face Craving\nLeaf\nLily\nLion Eye\nLower Cut\nMachine Cut\nMelee\nMerelani Cut\nMilleniuem\nMixed Cuts\nMosaic\nMurmar Cut\nNatural\nNear\nNear P Cut\nNormal\nNormal Faceted\nNorth Star\nNot Facet\nNugget\nPassion Cut\nPhoenix Cut\nPineapple Cut\nPlain Ball\nPlain Cut\nPlain Full Drill\nPoint Mounty\nPolki Cut\nPortuguese\nPreform\nPrincess Cut\nPyramid\nQuantum\nRadiant Cut\nRegular Cut\nRice\nRoll Top\nRose\nRose Carved\nRose Flower\nRough\nRounded Chips\nScissor Cut\nSemicircle\nSharp Corner\nShell\nShield\nSingle Cut\nSlab\nSlice\nSmooth\nSmooth Ball\nSmooth Bead\nSnowflakes\nSpecialty Cut\nSpinfire (TM) Cut\nStadium Cut\nStained Round\nStar Facet Cut\nStar Gate Cut\nStarry\nStellata Cut\nStep Cut\nSugar loaf\nSunglitz\nSwirl Dutch Cut\nSword Cut\nTablet\nTear Drop\nTemple Glass Triangle\nTexas Star\nTextured Cut\nThree Blade\nTime Square Cut\nTissue\nTissue Nucleated\nTrillion Cut\nTripple Trillion Quantum Cut\nTumble\nUniversal\nValentia\nVision Cut\nWave\nWaved Disc\nWindow Cut",
+   "translatable": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "custom_country_of_origin",
+   "fieldtype": "Select",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Country of Origin",
+   "mandatory_depends_on": "eval:doc.custom_item_group == \"Stone\" ",
+   "translatable": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "custom_coutry",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "coutry",
+   "translatable": 1
+  },
+  {
+   "fieldname": "custom_column_break_xwobd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_stone_treatment_list",
+   "fieldtype": "Small Text",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Stone Treatment List",
+   "mandatory_depends_on": "eval:doc.custom_item_group == \"Stone\" "
+  },
+  {
+   "columns": 1,
+   "fieldname": "custom_stone_pieces",
+   "fieldtype": "Int",
+   "label": "Stone Pieces"
+  },
+  {
+   "columns": 1,
+   "fieldname": "custom_avg_carat_weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Avg Carat Weight",
+   "precision": "3"
+  },
+  {
+   "columns": 1,
+   "fieldname": "custom_sku_weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "SKU Carat Weight",
+   "precision": "3"
+  },
+  {
+   "fieldname": "custom_column_break_bx6yp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "custom_setting_type",
+   "fieldtype": "Select",
+   "in_global_search": 1,
+   "label": "Setting Type",
+   "options": "\nProng\nBezel\nPave\nV Prong\nDouble Prong\nBack\nFlush\nTension\nPressure\nChannel\nWax\nFancy Prong\nGlue\nInlay\nStringing",
+   "translatable": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "custom_grade",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "Grade",
+   "translatable": 1
+  },
+  {
+   "fieldname": "custom_merch_color__attribute",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "label": "Merch Color / Attribute",
+   "options": "Stone Attributes"
+  },
+  {
+   "depends_on": "eval:doc.custom_item_group == \"Metal\" ",
+   "fieldname": "custom_section_break_ceqil",
+   "fieldtype": "Section Break",
+   "label": "Metal Specs"
+  },
+  {
+   "columns": 1,
+   "fieldname": "custom_metal_weight",
+   "fieldtype": "Float",
+   "label": "Avg Metal Weight",
+   "mandatory_depends_on": "eval:doc.custom_item_group == \"Metal\" "
+  },
+  {
+   "fieldname": "custom_column_break_ui0rq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_sku_metal_weight",
+   "fieldtype": "Float",
+   "label": "SKU Metal Weight"
+  },
+  {
+   "fieldname": "custom_column_break_y3jq7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_code.custom_metal_group",
+   "fieldname": "custom_metal_group",
+   "fieldtype": "Data",
+   "label": "Metal Group",
+   "translatable": 1
+  },
+  {
+   "fieldname": "column_break_dasv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_with_jback",
+   "fieldtype": "Check",
+   "label": "With JBack"
+  },
+  {
+   "depends_on": "eval:doc.custom_item_group == \"Chain\" || doc.custom_item_group == \"Finding\"",
+   "fieldname": "custom_findingchain_specs",
+   "fieldtype": "Section Break",
+   "label": "Finding/Chain Specs"
+  },
+  {
+   "columns": 1,
+   "fieldname": "custom_length",
+   "fieldtype": "Float",
+   "label": "Length"
+  },
+  {
+   "fieldname": "custom_column_break_srscw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "custom_weight_perpiece",
+   "fieldtype": "Float",
+   "label": "Weight per\u00a0Piece"
+  },
+  {
+   "fieldname": "custom_column_break_szdl3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quantity_and_rate",
+   "fieldtype": "Section Break",
+   "label": "Quantity (Required/Stock)"
+  },
+  {
+   "fieldname": "column_break_ezrr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty",
+   "reqd": 1
+  },
+  {
+   "fieldname": "custom_quantity",
+   "fieldtype": "Float",
+   "label": "Actual BOM Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "selling_price_column",
+   "fieldtype": "Column Break",
+   "label": "Selling Price"
+  },
+  {
+   "fieldname": "custom_selling_rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Selling Rate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "custom_selling_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Selling Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_break2",
+   "fieldtype": "Column Break",
+   "label": "Buying Price"
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "label": "Buying Rate",
+   "options": "currency"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Buying Amount",
+   "options": "currency",
+   "print_width": "150px",
+   "read_only": 1,
+   "width": "150px"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "custom_stock_details",
+   "fieldtype": "Section Break",
+   "label": "Stock Details"
+  },
+  {
+   "fieldname": "custom_ext_qty_required",
+   "fieldtype": "Float",
+   "label": "Ext Qty Required"
+  },
+  {
+   "fieldname": "custom_column_break_fdozc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_oh",
+   "fieldtype": "Float",
+   "label": "OH"
+  },
+  {
+   "fieldname": "custom_column_break_ahbrc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_net_balance_required",
+   "fieldtype": "Float",
+   "label": "Net Balance Required"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Item Description",
+   "print_width": "250px",
+   "width": "250px"
+  },
+  {
+   "fieldname": "col_break1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_code.image",
+   "fieldname": "image",
+   "fieldtype": "Attach",
+   "hidden": 1,
+   "label": "Image",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "image_view",
+   "fieldtype": "Image",
+   "label": "Image View",
+   "options": "image"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-07-29 15:05:01.761064",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "Customer Worksheet BOM Creator Items",
+ "owner": "ameerbabu@iwex.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

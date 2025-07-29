@@ -1,0 +1,273 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-23 16:20:39.574410",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_details_section",
+  "vendor_product_id",
+  "customer_sku",
+  "item_name",
+  "auto_correction",
+  "column_break_jmbx",
+  "item_group",
+  "item_code",
+  "status",
+  "sales_order_details_section",
+  "sales_order",
+  "column_break_sknp",
+  "order_type",
+  "column_break_xeht",
+  "sales_order_status",
+  "column_break_oxin",
+  "delivery_date",
+  "column_break_donz",
+  "customer_po_id",
+  "column_break_hvjx",
+  "customer_po_date",
+  "qty_and_price_section",
+  "qty",
+  "column_break_erjq",
+  "rate",
+  "column_break_danl",
+  "amount",
+  "column_break_wmsn",
+  "size",
+  "connected_documents_section",
+  "column_break_rxoq",
+  "bom",
+  "bom_status",
+  "column_break_wsqh",
+  "purchase_order",
+  "purchase_order_status",
+  "item_description_section",
+  "description",
+  "sales_order_item_row"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_details_section",
+   "fieldtype": "Section Break",
+   "label": "Item Details"
+  },
+  {
+   "fetch_from": "item_code.custom_vendor_product_id",
+   "fieldname": "vendor_product_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Vendor Product ID",
+   "placeholder": "Input",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item_code.custom_customer_sku",
+   "fieldname": "customer_sku",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer SKU",
+   "options": "Item"
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_correction",
+   "fieldtype": "Check",
+   "label": "Auto Correction"
+  },
+  {
+   "fieldname": "column_break_jmbx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_code.item_group",
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Group",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nFetched\nUpdated\nSubmitted"
+  },
+  {
+   "fieldname": "sales_order_details_section",
+   "fieldtype": "Section Break",
+   "label": "Sales Order Details"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "column_break_sknp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "order_type",
+   "fieldtype": "Data",
+   "label": "Order Type"
+  },
+  {
+   "fieldname": "column_break_xeht",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sales_order_status",
+   "fieldtype": "Data",
+   "label": "Sales Order Status"
+  },
+  {
+   "fieldname": "column_break_oxin",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "SO Delivery Date"
+  },
+  {
+   "fieldname": "column_break_donz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_po_id",
+   "fieldtype": "Data",
+   "label": "Customer PO ID"
+  },
+  {
+   "fieldname": "column_break_hvjx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_po_date",
+   "fieldtype": "Date",
+   "label": "Customer PO Date"
+  },
+  {
+   "fieldname": "qty_and_price_section",
+   "fieldtype": "Section Break",
+   "label": "Qty and Price"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Data",
+   "label": "Qty"
+  },
+  {
+   "fieldname": "column_break_erjq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "label": "Rate"
+  },
+  {
+   "fieldname": "column_break_danl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "column_break_wmsn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Int",
+   "label": "Size"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "connected_documents_section",
+   "fieldtype": "Section Break",
+   "label": "Connected Documents"
+  },
+  {
+   "fieldname": "column_break_rxoq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bom",
+   "fieldtype": "Link",
+   "label": "BOM",
+   "options": "BOM"
+  },
+  {
+   "fieldname": "bom_status",
+   "fieldtype": "Data",
+   "label": "BOM Status"
+  },
+  {
+   "fieldname": "column_break_wsqh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Purchase Order",
+   "options": "Purchase Order"
+  },
+  {
+   "fieldname": "purchase_order_status",
+   "fieldtype": "Data",
+   "label": "Purchase Order Status"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "item_description_section",
+   "fieldtype": "Section Break",
+   "label": "Item Description"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "sales_order_item_row",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Sales Order Item Row"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-07-29 15:05:03.180241",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "PO Header Items",
+ "owner": "ameerbabu@iwex.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
