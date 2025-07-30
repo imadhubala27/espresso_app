@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class StoneRequestItem(Document):
+class StoneReceiptItem(Document):
 	pass

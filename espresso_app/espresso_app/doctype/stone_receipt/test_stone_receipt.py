@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestStoneRequest(FrappeTestCase):
+class TestStoneReceipt(FrappeTestCase):
 	pass

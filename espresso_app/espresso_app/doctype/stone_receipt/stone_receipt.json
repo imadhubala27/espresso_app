@@ -99,7 +99,7 @@
    "fieldname": "stone_order_item",
    "fieldtype": "Table",
    "label": "Stone Order Item",
-   "options": "Stone Request Item"
+   "options": "Stone Receipt Item"
   },
   {
    "fieldname": "section_break_uriq",
@@ -148,10 +148,10 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2025-07-29 15:00:25.933385",
+ "modified": "2025-07-30 14:39:05.386466",
  "modified_by": "Administrator",
  "module": "espresso_app",
- "name": "Stone Request",
+ "name": "Stone Receipt",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "ameerbabu@iwex.in",
  "permissions": [
