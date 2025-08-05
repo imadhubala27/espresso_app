@@ -208,8 +208,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Company",
-   "options": "Company",
-   "reqd": 1
+   "options": "Company"
   },
   {
    "fetch_from": "company.abbr",
@@ -1255,7 +1254,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-29 15:05:01.008511",
+ "modified": "2025-08-04 12:41:34.498412",
  "modified_by": "Administrator",
  "module": "espresso_app",
  "name": "Customer Worksheet",
