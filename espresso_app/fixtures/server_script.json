@@ -1,0 +1,21 @@
+[
+ {
+  "allow_guest": 0,
+  "api_method": null,
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Delete",
+  "enable_rate_limit": 0,
+  "event_frequency": "All",
+  "modified": "2025-08-06 17:13:41.252543",
+  "module": "espresso_app",
+  "name": "MR cancel",
+  "rate_limit_count": 5,
+  "rate_limit_seconds": 86400,
+  "reference_doctype": "Material Request",
+  "script": "mr_name = doc.name  # The Material Request to unlink\r\n\r\nsales_orders = frappe.get_all(\r\n    \"Sales Order\",\r\n    filters={},\r\n    fields=[\"name\"]\r\n)\r\n\r\nfor so in sales_orders:\r\n    so_doc = frappe.get_doc(\"Sales Order\", so.name)\r\n    updated = False\r\n\r\n    # Unlink from custom_bom_items child table\r\n    for bom_item in so_doc.get(\"custom_bom_items\") or []:\r\n        if str(bom_item.custom_material_request_id) == mr_name:\r\n            bom_item.custom_material_request_id = \"\"\r\n            updated = True\r\n\r\n    if updated:\r\n        so_doc.save(ignore_permissions=True)\r\n",
+  "script_type": "DocType Event"
+ }
+]

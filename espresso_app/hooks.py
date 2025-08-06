@@ -5,9 +5,12 @@ app_description = "espresso_app"
 app_email = "imadhubala27@gmail.com"
 app_license = "mit"
 
+override_whitelisted_methods = {
+    "frappe.utils.change_log.get_versions": "espresso_app.overrides.get_versions.custom_get_app_versions"
+}
+
 # Apps
 # ------------------
-
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
@@ -260,5 +263,11 @@ fixtures = [
         "filters": [
             ["module", "=", "espresso_app"],
         ]
-    }
+    },
+{
+    "doctype": "Server Script",
+    "filters": [
+        ["module", "=", "espresso_app"],
+    ]
+}
 ]
