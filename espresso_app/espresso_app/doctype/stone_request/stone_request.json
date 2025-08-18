@@ -1,0 +1,332 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:SRQ-{YY}{MM}{DD}-{##}",
+ "creation": "2025-08-12 13:38:42.474962",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "posting_date",
+  "required_by",
+  "column_break_kmao",
+  "naming_series",
+  "direct_supply",
+  "column_break_clcu",
+  "requested_company",
+  "rc_abbr",
+  "arranging_company",
+  "ac_abbr",
+  "section_break_olal",
+  "column_break_cxki",
+  "image_vamr",
+  "column_break_vuni",
+  "customer_sku",
+  "vendor_product_id",
+  "column_break_gavf",
+  "status",
+  "disabled",
+  "section_break_unkr",
+  "stone_request_items",
+  "more_info_tab",
+  "source_document_section",
+  "column_break_lvbl",
+  "sku_sales_order",
+  "stone_sales_order",
+  "column_break_vpkf",
+  "order_type",
+  "stone_sales_order_type",
+  "column_break_mqun",
+  "delivery_date_eta",
+  "stone_delivery_date",
+  "column_break_jvvg",
+  "sales_order_status",
+  "stone_sales_order_status",
+  "column_break_dtpo",
+  "bom_id",
+  "shipping_details_section",
+  "requested_company_address",
+  "requested_company_address_display",
+  "column_break_uixa",
+  "factory_address",
+  "factory_address_display"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "required_by",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Required by",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_kmao",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "SRQ.-.YY.MM.DD.###",
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Series",
+   "no_copy": 1,
+   "options": "SRQ.-.YY.MM.DD.###",
+   "unique": 1
+  },
+  {
+   "fieldname": "direct_supply",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Direct Supply",
+   "options": "\nYes\nNo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_clcu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "requested_company",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Requested Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "arranging_company",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Arranging Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_olal",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_cxki",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "image_vamr",
+   "fieldtype": "Image",
+   "label": "SKU"
+  },
+  {
+   "fieldname": "column_break_vuni",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_sku",
+   "fieldtype": "Data",
+   "label": "Customer SKU"
+  },
+  {
+   "fieldname": "vendor_product_id",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Vendor Product ID"
+  },
+  {
+   "fieldname": "column_break_gavf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "\nInquiry\nOrdered\nShipped\nCancelled\nCompleted"
+  },
+  {
+   "fieldname": "stone_request_items",
+   "fieldtype": "Table",
+   "label": "Stone Request Items",
+   "options": "Stone Request Items"
+  },
+  {
+   "fieldname": "more_info_tab",
+   "fieldtype": "Tab Break",
+   "label": "More Info"
+  },
+  {
+   "fieldname": "column_break_lvbl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sku_sales_order",
+   "fieldtype": "Link",
+   "label": "SKU Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "column_break_vpkf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "sku_sales_order.custom_sales_order_type",
+   "fieldname": "order_type",
+   "fieldtype": "Data",
+   "label": "SKU Order Type"
+  },
+  {
+   "fieldname": "column_break_mqun",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "sku_sales_order.delivery_date",
+   "fieldname": "delivery_date_eta",
+   "fieldtype": "Date",
+   "label": "SKU Delivery Date ETA"
+  },
+  {
+   "fieldname": "column_break_jvvg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "sku_sales_order.status",
+   "fieldname": "sales_order_status",
+   "fieldtype": "Data",
+   "label": "SKU Sales Order Status"
+  },
+  {
+   "fieldname": "shipping_details_section",
+   "fieldtype": "Section Break",
+   "label": "Shipping Details"
+  },
+  {
+   "fieldname": "requested_company_address",
+   "fieldtype": "Link",
+   "label": "Requested Company Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "requested_company_address_display",
+   "fieldtype": "Small Text",
+   "label": "Requested Company Address Display"
+  },
+  {
+   "fieldname": "column_break_uixa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "factory_address",
+   "fieldtype": "Link",
+   "label": "Factory Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "factory_address_display",
+   "fieldtype": "Small Text",
+   "label": "Factory Address Display"
+  },
+  {
+   "fetch_from": "requested_company.abbr",
+   "fieldname": "rc_abbr",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "RC Abbr"
+  },
+  {
+   "fetch_from": "arranging_company.abbr",
+   "fieldname": "ac_abbr",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "AC Abbr"
+  },
+  {
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "section_break_unkr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "source_document_section",
+   "fieldtype": "Section Break",
+   "label": "Source Documents"
+  },
+  {
+   "fieldname": "stone_sales_order",
+   "fieldtype": "Link",
+   "label": "Stone Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fetch_from": "stone_sales_order.custom_sales_order_type",
+   "fieldname": "stone_sales_order_type",
+   "fieldtype": "Data",
+   "label": "Stone Sales Order Type"
+  },
+  {
+   "fieldname": "stone_delivery_date",
+   "fieldtype": "Date",
+   "label": "Stone Delivery Date"
+  },
+  {
+   "fieldname": "stone_sales_order_status",
+   "fieldtype": "Data",
+   "label": "Stone Sales Order Status"
+  },
+  {
+   "fieldname": "column_break_dtpo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "sku_sales_order.custom_item_bom",
+   "fieldname": "bom_id",
+   "fieldtype": "Link",
+   "label": "BOM ID",
+   "options": "BOM"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-14 15:59:47.440683",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "Stone Request",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

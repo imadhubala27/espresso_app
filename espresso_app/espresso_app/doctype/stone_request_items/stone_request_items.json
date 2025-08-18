@@ -1,0 +1,298 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-12 13:39:46.885618",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "item_name",
+  "column_break_rdgu",
+  "item_group",
+  "material_id",
+  "column_break_jnke",
+  "custom_gemstone",
+  "dimensions",
+  "column_break_dacr",
+  "shape",
+  "composition",
+  "stone_specs_section",
+  "custom_country_of_origin",
+  "avg_carat_weight",
+  "sku_carat_weight",
+  "column_break_wgkb",
+  "grade",
+  "cut",
+  "setting_type",
+  "column_break_wuqn",
+  "custom_stone_treatment_list",
+  "column_break_rfff",
+  "merch_color__attribute",
+  "stone_pieces",
+  "quantity_requiredstock_section",
+  "qty",
+  "column_break_jzqr",
+  "uom",
+  "column_break_xyxi",
+  "actual_bom_qty",
+  "column_break_vsih",
+  "net_qty_to_be_purchased",
+  "description_section",
+  "item_description",
+  "column_break_djmn",
+  "bom_no",
+  "image_view",
+  "section_break_kxdz",
+  "stone_receipt_id",
+  "column_break_fkfk",
+  "stone_receipt_status"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "column_break_dacr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_code.item_group",
+   "fieldname": "item_group",
+   "fieldtype": "Data",
+   "label": "Item Group"
+  },
+  {
+   "depends_on": "eval:!doc.do_not_explode",
+   "fieldname": "bom_no",
+   "fieldtype": "Link",
+   "label": "BOM No",
+   "options": "BOM"
+  },
+  {
+   "depends_on": "eval:doc.item_group == \"Stone\" || doc.custom_item_group == \"Pearl\" || doc.custom_item_group == \"Pearl Strand\" || doc.custom_item_group == \"Bead Strand\" ",
+   "fieldname": "stone_specs_section",
+   "fieldtype": "Section Break",
+   "label": "Stone Specs"
+  },
+  {
+   "fetch_from": "item_code.custom_gemstone",
+   "fieldname": "custom_gemstone",
+   "fieldtype": "Link",
+   "label": "Gemstone",
+   "options": "Gemstones"
+  },
+  {
+   "fieldname": "custom_country_of_origin",
+   "fieldtype": "Select",
+   "label": "Country of Origin"
+  },
+  {
+   "fieldname": "avg_carat_weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Avg Carat Weight",
+   "precision": "2"
+  },
+  {
+   "fieldname": "sku_carat_weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "SKU Carat Weight"
+  },
+  {
+   "fieldname": "column_break_wgkb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "grade",
+   "fieldtype": "Data",
+   "label": "Grade",
+   "translatable": 1
+  },
+  {
+   "fieldname": "cut",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Cut",
+   "options": "\n100 Facet\n101 Facet\n105 Facet Cut\n12 Sided\n145 Facet\n2 Flat\n2 Flat Holo\n7 Sided\n8 Sides Even Cut\n8 Sides Even Cut (EM)\nAnti\nApertura\nArrow Cut\nAsscher Cut\nBall\nBaroque\nBarrel\nBarrian Cut\nBead\nBead Ball\nBead Full Drill\nBead Illusion\nBella 10 Sides\nBella 12 Sides\nBella 8 Sides\nBend\nBlended\nBotton\nBridge\nBrilliant Cut\nBriolette\nBriolite-Both Side Cheker\nBucket Bead\nBuff Top\nBuff Top Concave Cut\nBuff Top Spinfire Cut\nBuff Top Swirl Cut\nButton\nCab\nCab Flat\nCab holo\nCab with Hole\nCAB/CKB\nCambered\nCameo\nCapsule\nCarved\nCarving Flower\nCastle\nCharizma (TM)\nCHB\nChecker\nChecker Board\nCheckerboard Flat Bottom\nChips\nCircle\nCK/CAB\nCKB\nCKB Flat Bottom\nCKB/Concave Cut\nCKBD\nCoin\nConcave\nConcave Cut\nConvex\nCrazy Fire\nCriss Cut\nCross Cut\nCrystal\nCustom\nCutting star\nCylinder\nD Shape\nDeeply Aqua Cut\nDiamond Cut\nDisc\nDome C/B\nDome CKB\nDonut\nDouble Briolette\nDouble Cab\nDouble CKB\nDouble Flat\nDrill thru\nDrop\nDrop Circle\nEdge Cut\nEight Hearts and Eight Arrows\nEliminating\nEmanating Star Cut\nEmerald Cut\nEqual Side\nEuropean Cut\nF/S\nFacet Cab\nFaceted\nFancy Cab\nFancy Cut\nFire Work\nFit Mount\nFlat\nFlat Bottom\nFlat Bottom High Dome Checker board\nFlower\nFlower \"T\"\nFlower Craving\nFlower Cut\nFreeForm\nFull Cut\nFull Drilled\nGalaxy\nGlitter Mine Cut\nGraduated\nHalf Drill\nHalf Holo CAB\nHeart & Arrow\nHeishi\nHelm Cut\nHint Cut\nHoney Comb Cut\nIce Flower\nIcon\nIdol Blue\nIllusion\nIn Line Crown\nInferno\nInlay\nIOTA\nIrregular\nKadenze Cut\nKatzenberg Cut\nKepler Cut\nKianga Cut\nKorean Cut\nLady's Face Craving\nLeaf\nLily\nLion Eye\nLower Cut\nMachine Cut\nMelee\nMerelani Cut\nMilleniuem\nMixed Cuts\nMosaic\nMurmar Cut\nNatural\nNear\nNear P Cut\nNormal\nNormal Faceted\nNorth Star\nNot Facet\nNugget\nPassion Cut\nPhoenix Cut\nPineapple Cut\nPlain Ball\nPlain Cut\nPlain Full Drill\nPoint Mounty\nPolki Cut\nPortuguese\nPreform\nPrincess Cut\nPyramid\nQuantum\nRadiant Cut\nRegular Cut\nRice\nRoll Top\nRose\nRose Carved\nRose Flower\nRough\nRounded Chips\nScissor Cut\nSemicircle\nSharp Corner\nShell\nShield\nSingle Cut\nSlab\nSlice\nSmooth\nSmooth Ball\nSmooth Bead\nSnowflakes\nSpecialty Cut\nSpinfire (TM) Cut\nStadium Cut\nStained Round\nStar Facet Cut\nStar Gate Cut\nStarry\nStellata Cut\nStep Cut\nSugar loaf\nSunglitz\nSwirl Dutch Cut\nSword Cut\nTablet\nTear Drop\nTemple Glass Triangle\nTexas Star\nTextured Cut\nThree Blade\nTime Square Cut\nTissue\nTissue Nucleated\nTrillion Cut\nTripple Trillion Quantum Cut\nTumble\nUniversal\nValentia\nVision Cut\nWave\nWaved Disc\nWindow Cut",
+   "translatable": 1
+  },
+  {
+   "fieldname": "setting_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Setting Type",
+   "options": "\nProng\nBezel\nPave\nV Prong\nDouble Prong\nBack\nFlush\nTension\nPressure\nChannel\nWax\nFancy Prong\nGlue\nInlay\nStringing"
+  },
+  {
+   "fieldname": "custom_stone_treatment_list",
+   "fieldtype": "Small Text",
+   "label": "Stone Treatment List"
+  },
+  {
+   "fieldname": "column_break_rfff",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "merch_color__attribute",
+   "fieldtype": "Link",
+   "label": "Merch Color / Attribute",
+   "options": "Stone Attributes"
+  },
+  {
+   "fieldname": "stone_pieces",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Stone Pieces"
+  },
+  {
+   "fieldname": "quantity_requiredstock_section",
+   "fieldtype": "Section Break",
+   "label": "Quantity (Required)"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_jzqr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_xyxi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_bom_qty",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Actual BOM Qty",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "item_description",
+   "fieldtype": "Small Text",
+   "label": "Item Description"
+  },
+  {
+   "fieldname": "column_break_djmn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "image_view",
+   "fieldtype": "Image",
+   "label": "Image View",
+   "options": "image"
+  },
+  {
+   "fieldname": "column_break_wuqn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_rdgu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_code.custom_material_id",
+   "fieldname": "material_id",
+   "fieldtype": "Data",
+   "label": "Material ID"
+  },
+  {
+   "fieldname": "column_break_jnke",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_code.custom_dimensions",
+   "fieldname": "dimensions",
+   "fieldtype": "Data",
+   "label": "Dimensions"
+  },
+  {
+   "fetch_from": "item_code.custom_shape",
+   "fieldname": "shape",
+   "fieldtype": "Data",
+   "label": "Shape"
+  },
+  {
+   "fetch_from": "item_code.custom_composition",
+   "fieldname": "composition",
+   "fieldtype": "Data",
+   "label": "Composition"
+  },
+  {
+   "fieldname": "column_break_vsih",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "net_qty_to_be_purchased",
+   "fieldtype": "Int",
+   "label": "Net Qty to be Purchased"
+  },
+  {
+   "fieldname": "section_break_kxdz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "stone_receipt_id",
+   "fieldtype": "Link",
+   "label": "Stone Receipt ID",
+   "options": "Stone Receipt"
+  },
+  {
+   "fieldname": "column_break_fkfk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stone_receipt_status",
+   "fieldtype": "Data",
+   "label": "Stone Receipt Status"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-08-14 13:07:56.074843",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "Stone Request Items",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
