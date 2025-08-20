@@ -9,8 +9,8 @@
   "posting_date",
   "required_by",
   "column_break_kmao",
-  "naming_series",
   "direct_supply",
+  "factory",
   "column_break_clcu",
   "requested_company",
   "rc_abbr",
@@ -19,10 +19,12 @@
   "section_break_olal",
   "column_break_cxki",
   "image_vamr",
+  "sku_image",
   "column_break_vuni",
   "customer_sku",
   "vendor_product_id",
   "column_break_gavf",
+  "naming_series",
   "status",
   "disabled",
   "section_break_unkr",
@@ -44,6 +46,7 @@
   "column_break_dtpo",
   "bom_id",
   "shipping_details_section",
+  "column_break_dkyv",
   "requested_company_address",
   "requested_company_address_display",
   "column_break_uixa",
@@ -74,8 +77,7 @@
    "default": "SRQ.-.YY.MM.DD.###",
    "fieldname": "naming_series",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
+   "hidden": 1,
    "label": "Series",
    "no_copy": 1,
    "options": "SRQ.-.YY.MM.DD.###",
@@ -125,18 +127,21 @@
   {
    "fieldname": "image_vamr",
    "fieldtype": "Image",
-   "label": "SKU"
+   "label": "SKU",
+   "options": "sku_image"
   },
   {
    "fieldname": "column_break_vuni",
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "sku_sales_order.custom_customer_sku",
    "fieldname": "customer_sku",
    "fieldtype": "Data",
    "label": "Customer SKU"
   },
   {
+   "fetch_from": "sku_sales_order.custom_vendor_product_id",
    "fieldname": "vendor_product_id",
    "fieldtype": "Data",
    "in_filter": 1,
@@ -155,7 +160,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "\nInquiry\nOrdered\nShipped\nCancelled\nCompleted"
+   "options": "\nInquiry\nOrdered\nShipped\nPurchased\nCancelled\nCompleted"
   },
   {
    "fieldname": "stone_request_items",
@@ -214,27 +219,32 @@
    "label": "Shipping Details"
   },
   {
+   "depends_on": "eval:doc.direct_supply == \"Yes\"",
    "fieldname": "requested_company_address",
    "fieldtype": "Link",
    "label": "Requested Company Address",
    "options": "Address"
   },
   {
+   "depends_on": "eval:doc.direct_supply == \"Yes\"",
    "fieldname": "requested_company_address_display",
    "fieldtype": "Small Text",
    "label": "Requested Company Address Display"
   },
   {
+   "depends_on": "eval:doc.direct_supply===\"Yes\";",
    "fieldname": "column_break_uixa",
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.direct_supply == \"No\"",
    "fieldname": "factory_address",
    "fieldtype": "Link",
    "label": "Factory Address",
    "options": "Address"
   },
   {
+   "depends_on": "eval:doc.direct_supply == \"No\"",
    "fieldname": "factory_address_display",
    "fieldtype": "Small Text",
    "label": "Factory Address Display"
@@ -300,12 +310,32 @@
    "fieldtype": "Link",
    "label": "BOM ID",
    "options": "BOM"
+  },
+  {
+   "depends_on": "eval:doc.direct_supply===\"Yes\";",
+   "fetch_from": "sku_sales_order.custom_factory_vendor",
+   "fieldname": "factory",
+   "fieldtype": "Link",
+   "label": "Factory",
+   "options": "Supplier"
+  },
+  {
+   "fetch_from": "sku_sales_order.custom_image_product",
+   "fieldname": "sku_image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "SKU Image"
+  },
+  {
+   "depends_on": "eval:doc.direct_supply===\"No\";",
+   "fieldname": "column_break_dkyv",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-14 15:59:47.440683",
+ "modified": "2025-08-20 15:59:54.376939",
  "modified_by": "Administrator",
  "module": "espresso_app",
  "name": "Stone Request",

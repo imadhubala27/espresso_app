@@ -39,7 +39,7 @@
   "column_break_vsih",
   "net_qty_to_be_purchased",
   "description_section",
-  "item_description",
+  "description",
   "column_break_djmn",
   "bom_no",
   "image_view",
@@ -202,11 +202,6 @@
    "label": "Description"
   },
   {
-   "fieldname": "item_description",
-   "fieldtype": "Small Text",
-   "label": "Item Description"
-  },
-  {
    "fieldname": "column_break_djmn",
    "fieldtype": "Column Break"
   },
@@ -276,16 +271,22 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "stone_receipt_id.status",
    "fieldname": "stone_receipt_status",
    "fieldtype": "Data",
    "label": "Stone Receipt Status"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Item Description"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-14 13:07:56.074843",
+ "modified": "2025-08-20 16:00:44.913911",
  "modified_by": "Administrator",
  "module": "espresso_app",
  "name": "Stone Request Items",

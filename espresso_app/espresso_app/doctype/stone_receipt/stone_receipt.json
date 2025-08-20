@@ -1,57 +1,63 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:SRQ-{YYYY}-{#####}",
- "creation": "2025-05-15 15:23:18.842730",
- "default_view": "List",
+ "autoname": "naming_series:",
+ "creation": "2025-08-20 16:06:08.133265",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_yyzl",
   "supplier",
   "country_of_supplier",
+  "stone_receipt_type",
   "column_break_bcoo",
+  "company",
   "order_date",
   "order_time",
   "naming_series",
-  "column_break_upww",
-  "company",
-  "status",
   "abbr",
+  "column_break_upww",
+  "status",
+  "item_name",
+  "material_id",
   "column_break_vmfw",
   "sku_image",
   "sku_img",
-  "suppliervendor_documents_section",
-  "delivery_challan_no",
-  "column_break_ybtj",
-  "delivery_challan_date",
-  "column_break_ixvp",
-  "total_packets_received",
-  "column_break_kmet",
-  "total_carats_received",
-  "column_break_qiqi",
-  "total_pieces_received",
+  "gemstone",
   "item_details_section",
   "item_code",
-  "material_id",
-  "item_name",
   "item_group",
-  "column_break_nyzr",
-  "bom",
-  "sr_id",
-  "gemstone",
   "country_of_origin",
   "column_break_xtpt",
   "avg_carat_weight",
   "sku_carat_weight",
+  "column_break_nyzr",
   "stone_pieces",
   "stone_carats",
+  "suppliervendor_documents_section",
+  "column_break_ixvp",
+  "pieces_received",
+  "balance_pieces",
+  "column_break_ybtj",
+  "delivery_challan_no",
+  "delivery_challan_date",
+  "stone_returns_column",
+  "return_note_id",
+  "return_note_date",
+  "stone_inspection_details_section",
+  "assorting_status",
+  "column_break_drpq",
+  "assorter",
+  "column_break_rixi",
+  "accepted_pieces",
+  "stone_quantity_details_section",
+  "required_pieces",
+  "column_break_qtoy",
+  "fulfilled_pieces",
+  "column_break_mrda",
+  "balance_required",
   "section_break_qzvy",
   "stone_transaction_details",
-  "stone_inspection_details_section",
-  "inspector",
-  "column_break_drpq",
-  "inspection_status",
   "stone_specs_section",
   "column_break_asor",
   "grade",
@@ -62,9 +68,28 @@
   "column_break_bids",
   "stone_treatment_list",
   "section_break_yinx",
-  "item_description"
+  "item_description",
+  "amended_from",
+  "more_info_tab",
+  "bom",
+  "column_break_epbk",
+  "sku_sales_order",
+  "column_break_bqux",
+  "stone_sales_order",
+  "connections_tab"
  ],
  "fields": [
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Stone Receipt",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
   {
    "fieldname": "section_break_yyzl",
    "fieldtype": "Section Break",
@@ -73,43 +98,44 @@
   {
    "fieldname": "supplier",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Supplier/Vendor",
    "options": "Supplier",
    "reqd": 1
   },
   {
-   "fieldname": "column_break_upww",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "company",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Company",
-   "options": "Company",
-   "reqd": 1
-  },
-  {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "label": "Status",
-   "options": "Draft\nOrdered\nReceived\nShipped"
-  },
-  {
-   "fetch_from": "company.abbr",
-   "fieldname": "abbr",
+   "fetch_from": "supplier.country",
+   "fieldname": "country_of_supplier",
    "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Abbr"
+   "label": "Country of Supplier"
+  },
+  {
+   "fieldname": "stone_receipt_type",
+   "fieldtype": "Select",
+   "label": "Stone Receipt Type",
+   "options": "\nVendor Product\nOwn Hand"
   },
   {
    "fieldname": "column_break_bcoo",
    "fieldtype": "Column Break"
   },
   {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
    "default": "Today",
    "fieldname": "order_date",
    "fieldtype": "Date",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Order Date",
    "read_only": 1,
    "reqd": 1
@@ -132,10 +158,38 @@
    "unique": 1
   },
   {
-   "fetch_from": "supplier.country",
-   "fieldname": "country_of_supplier",
+   "fetch_from": "company.abbr",
+   "fieldname": "abbr",
    "fieldtype": "Data",
-   "label": "Country of Supplier"
+   "hidden": 1,
+   "label": "Abbr"
+  },
+  {
+   "fieldname": "column_break_upww",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nOrdered\nReceived\nShipped"
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "material_id",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Material ID"
   },
   {
    "fieldname": "column_break_vmfw",
@@ -152,53 +206,17 @@
    "fieldname": "sku_img",
    "fieldtype": "Image",
    "label": "SKU Image",
+   "max_height": "30px",
    "options": "sku_image"
   },
   {
-   "fieldname": "suppliervendor_documents_section",
-   "fieldtype": "Section Break",
-   "label": "Supplier/Vendor Documents"
-  },
-  {
-   "fieldname": "delivery_challan_no",
-   "fieldtype": "Data",
-   "label": "Delivery Challan No"
-  },
-  {
-   "fieldname": "column_break_ybtj",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "delivery_challan_date",
-   "fieldtype": "Date",
-   "label": "Delivery Challan Date"
-  },
-  {
-   "fieldname": "column_break_ixvp",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "total_packets_received",
-   "fieldtype": "Int",
-   "label": "Total Packets Received"
-  },
-  {
-   "fieldname": "column_break_kmet",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "total_carats_received",
-   "fieldtype": "Float",
-   "label": "Total Carats Received"
-  },
-  {
-   "fieldname": "column_break_qiqi",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "total_pieces_received",
-   "fieldtype": "Int",
-   "label": "Total Pieces Received"
+   "fieldname": "gemstone",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Gemstone",
+   "options": "Gemstones"
   },
   {
    "fieldname": "item_details_section",
@@ -213,44 +231,12 @@
    "options": "Item"
   },
   {
-   "fieldname": "material_id",
-   "fieldtype": "Data",
-   "label": "Material ID"
-  },
-  {
-   "fetch_from": "item_code.item_name",
-   "fieldname": "item_name",
-   "fieldtype": "Data",
-   "label": "Item Name"
-  },
-  {
    "fetch_from": "item_code.item_group",
    "fieldname": "item_group",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Item Group",
    "options": "Item Group"
-  },
-  {
-   "fieldname": "column_break_nyzr",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "bom",
-   "fieldtype": "Link",
-   "label": "BOM",
-   "options": "BOM"
-  },
-  {
-   "fieldname": "sr_id",
-   "fieldtype": "Link",
-   "label": "SR ID",
-   "options": "Stone Request"
-  },
-  {
-   "fieldname": "gemstone",
-   "fieldtype": "Link",
-   "label": "Gemstone",
-   "options": "Gemstones"
   },
   {
    "fieldname": "country_of_origin",
@@ -272,8 +258,13 @@
    "label": "SKU Carat Weight"
   },
   {
+   "fieldname": "column_break_nyzr",
+   "fieldtype": "Column Break"
+  },
+  {
    "fieldname": "stone_pieces",
    "fieldtype": "Int",
+   "in_list_view": 1,
    "label": "Stone Pieces"
   },
   {
@@ -283,14 +274,62 @@
    "label": "Stone Carats"
   },
   {
-   "fieldname": "section_break_qzvy",
-   "fieldtype": "Section Break"
+   "fieldname": "suppliervendor_documents_section",
+   "fieldtype": "Section Break",
+   "label": "Stone Receipt and Acceptance Details"
   },
   {
-   "fieldname": "stone_transaction_details",
-   "fieldtype": "Table",
-   "label": "Stone Transaction Details",
-   "options": "Stone Receipt Item"
+   "fieldname": "column_break_ixvp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pieces_received",
+   "fieldtype": "Int",
+   "label": "Pieces Received"
+  },
+  {
+   "fieldname": "balance_pieces",
+   "fieldtype": "Int",
+   "label": "Balance Pieces",
+   "non_negative": 1
+  },
+  {
+   "depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
+   "fieldname": "column_break_ybtj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
+   "fieldname": "delivery_challan_no",
+   "fieldtype": "Data",
+   "label": "Delivery Challan No",
+   "mandatory_depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\""
+  },
+  {
+   "depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
+   "fieldname": "delivery_challan_date",
+   "fieldtype": "Date",
+   "label": "Delivery Challan Date",
+   "mandatory_depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\""
+  },
+  {
+   "depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
+   "fieldname": "stone_returns_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
+   "fieldname": "return_note_id",
+   "fieldtype": "Data",
+   "label": "Return Note ID",
+   "mandatory_depends_on": "eval:(doc.stone_receipt_type == \"Vendor Product\" && doc.accepted_pieces < doc.pieces_received);"
+  },
+  {
+   "depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
+   "fieldname": "return_note_date",
+   "fieldtype": "Date",
+   "label": "Return Note Date",
+   "mandatory_depends_on": "eval:(doc.stone_receipt_type == \"Vendor Product\" && doc.accepted_pieces < doc.pieces_received);"
   },
   {
    "fieldname": "stone_inspection_details_section",
@@ -298,20 +337,80 @@
    "label": "Stone Inspection Details"
   },
   {
-   "fieldname": "inspector",
-   "fieldtype": "Link",
-   "label": "Inspector",
-   "options": "User"
+   "default": "Pending",
+   "fieldname": "assorting_status",
+   "fieldtype": "Select",
+   "label": "Assorting Status",
+   "options": "Pending\nCompleted"
   },
   {
    "fieldname": "column_break_drpq",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "inspection_status",
-   "fieldtype": "Select",
-   "label": "Inspection Status",
-   "options": "\nPending\nCompleted"
+   "fieldname": "assorter",
+   "fieldtype": "Link",
+   "label": "Assorter",
+   "mandatory_depends_on": "eval:doc.assorting_status === \"Completed\";",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_rixi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "accepted_pieces",
+   "fieldtype": "Int",
+   "label": "Accepted Pieces",
+   "mandatory_depends_on": "eval:doc.assorting_status === \"Completed\";",
+   "non_negative": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "stone_quantity_details_section",
+   "fieldtype": "Section Break",
+   "hide_border": 1,
+   "label": "Stones Required/Requested"
+  },
+  {
+   "fieldname": "required_pieces",
+   "fieldtype": "Int",
+   "label": "Required Pieces",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_qtoy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fulfilled_pieces",
+   "fieldtype": "Int",
+   "label": "Fulfilled Pieces",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_mrda",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "balance_required",
+   "fieldtype": "Int",
+   "label": "Balance Pieces Required",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_qzvy",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Packet Details"
+  },
+  {
+   "fieldname": "stone_transaction_details",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "label": "Stone Transaction Details",
+   "options": "Stone Receipt Item"
   },
   {
    "collapsible": 1,
@@ -365,35 +464,54 @@
    "fieldname": "item_description",
    "fieldtype": "Small Text",
    "label": "Item Description"
+  },
+  {
+   "fieldname": "more_info_tab",
+   "fieldtype": "Tab Break",
+   "label": "More Info"
+  },
+  {
+   "fetch_from": "sku_sales_order.custom_item_bom",
+   "fieldname": "bom",
+   "fieldtype": "Link",
+   "label": "BOM",
+   "options": "BOM"
+  },
+  {
+   "fieldname": "column_break_epbk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sku_sales_order",
+   "fieldtype": "Link",
+   "label": "SKU Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "column_break_bqux",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stone_sales_order",
+   "fieldtype": "Link",
+   "label": "Stone Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "connections_tab",
+   "fieldtype": "Tab Break",
+   "label": "Connections"
   }
  ],
  "grid_page_length": 50,
- "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
- "links": [
-  {
-   "link_doctype": "Sales Order",
-   "link_fieldname": "name"
-  },
-  {
-   "link_doctype": "Purchase Invoice",
-   "link_fieldname": "name"
-  },
-  {
-   "link_doctype": "Sales Invoice",
-   "link_fieldname": "name"
-  },
-  {
-   "link_doctype": "BOM",
-   "link_fieldname": "name"
-  }
- ],
- "modified": "2025-08-14 15:11:37.301152",
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-08-20 16:09:45.965495",
  "modified_by": "Administrator",
  "module": "espresso_app",
  "name": "Stone Receipt",
- "naming_rule": "By \"Naming Series\" field",
- "owner": "ameerbabu@iwex.in",
+ "owner": "Administrator",
  "permissions": [
   {
    "create": 1,
@@ -405,17 +523,7 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "OMT",
-   "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],
