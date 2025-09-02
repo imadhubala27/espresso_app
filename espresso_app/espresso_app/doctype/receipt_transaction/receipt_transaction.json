@@ -1,15 +1,15 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:",
- "creation": "2025-08-20 16:06:08.133265",
+ "autoname": "format:{abbr}-SCF-{YY}{MM}{DD}-{###}",
+ "creation": "2025-09-01 12:07:10.961692",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_yyzl",
-  "stone_receipt_type",
   "supplier",
   "country_of_supplier",
+  "stone_receipt_type",
   "column_break_bcoo",
   "company",
   "order_date",
@@ -17,14 +17,32 @@
   "naming_series",
   "abbr",
   "column_break_upww",
-  "status",
   "item_name",
-  "item_code",
+  "material_id",
+  "assorting_status",
+  "uom",
   "column_break_vmfw",
   "sku_image",
   "sku_img",
+  "stone_inspection_details_section",
+  "column_break_ybtj",
+  "stone_receipt_id",
+  "stone_request_id",
+  "delivery_challan_no",
+  "delivery_challan_date",
+  "column_break_ixvp",
+  "pieces_received",
+  "carat_received",
+  "column_break_drpq",
+  "assorter",
+  "column_break_rixi",
+  "accepted_pieces",
+  "accepted_carat",
+  "column_break_rzvv",
+  "pieces_balance",
+  "carats_balance",
   "item_details_section",
-  "material_id",
+  "item_code",
   "item_group",
   "country_of_origin",
   "column_break_xtpt",
@@ -35,22 +53,8 @@
   "gemstone",
   "stone_pieces",
   "stone_carats",
-  "suppliervendor_documents_section",
-  "column_break_ybtj",
-  "delivery_challan_no",
-  "delivery_challan_date",
-  "from_stone_request_column",
-  "required_pieces",
-  "requested_carats",
-  "column_break_ixvp",
-  "pieces_received",
-  "carat_received",
-  "column_break_mfvn",
-  "confirmed_pieces",
-  "confirmed_carats",
-  "column_break_wasn",
-  "pending_pieces",
-  "pending_carat",
+  "section_break_qzvy",
+  "stone_transaction_details",
   "stone_specs_section",
   "column_break_asor",
   "grade",
@@ -65,10 +69,12 @@
   "amended_from",
   "more_info_tab",
   "bom",
-  "sku_sales_order",
-  "stone_sales_order",
   "column_break_epbk",
-  "stones_request_fetched",
+  "sku_sales_order",
+  "column_break_bqux",
+  "stone_sales_order",
+  "column_break_cvne",
+  "purchase_order_id",
   "connections_tab"
  ],
  "fields": [
@@ -84,22 +90,22 @@
    "search_index": 1
   },
   {
+   "default": "{abbr}.-SRQ-.YY.MM.DD.-###",
    "fieldname": "section_break_yyzl",
    "fieldtype": "Section Break",
-   "hide_border": 1
+   "hide_border": 1,
+   "options": "{abbr}.-SRQ-.YY.MM.DD.-###"
   },
   {
-   "depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
    "fieldname": "supplier",
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Supplier/Vendor",
-   "mandatory_depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
-   "options": "Supplier"
+   "options": "Supplier",
+   "reqd": 1
   },
   {
-   "depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
    "fetch_from": "supplier.country",
    "fieldname": "country_of_supplier",
    "fieldtype": "Data",
@@ -145,13 +151,10 @@
    "reqd": 1
   },
   {
-   "default": "{abbr}.-SRQ-.YY.MM.-###",
    "fieldname": "naming_series",
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Naming Series",
-   "no_copy": 1,
-   "options": "{abbr}.-SRQ-.YY.MM.-###",
    "unique": 1
   },
   {
@@ -164,15 +167,6 @@
   {
    "fieldname": "column_break_upww",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Status",
-   "options": "Draft\nPending Confirmation\nConfirmed"
   },
   {
    "fetch_from": "item_code.item_name",
@@ -188,6 +182,21 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Material ID"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "assorting_status",
+   "fieldtype": "Select",
+   "label": "Assorting Status",
+   "options": "Pending\nCompleted"
+  },
+  {
+   "fetch_from": "item_code.stock_uom",
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "UOM",
+   "options": "UOM"
   },
   {
    "fieldname": "column_break_vmfw",
@@ -208,14 +217,92 @@
    "options": "sku_image"
   },
   {
-   "fetch_from": "item_code.custom_gemstone",
-   "fieldname": "gemstone",
+   "depends_on": "eval:doc.assorting_status == \"Completed\";",
+   "fieldname": "stone_inspection_details_section",
+   "fieldtype": "Section Break",
+   "label": "Stone Inspection Details"
+  },
+  {
+   "depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
+   "fieldname": "column_break_ybtj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stone_receipt_id",
    "fieldtype": "Link",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Gemstone",
-   "options": "Gemstones"
+   "label": "Stone Receipt ID",
+   "options": "Stone Receipt"
+  },
+  {
+   "depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
+   "fetch_from": "stone_receipt_id.delivery_challan_no",
+   "fieldname": "delivery_challan_no",
+   "fieldtype": "Data",
+   "label": "Delivery Challan No",
+   "no_copy": 1
+  },
+  {
+   "depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
+   "fetch_from": "stone_receipt_id.delivery_challan_date",
+   "fieldname": "delivery_challan_date",
+   "fieldtype": "Date",
+   "label": "Delivery Challan Date",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "column_break_ixvp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pieces_received",
+   "fieldtype": "Int",
+   "label": "Pieces Received"
+  },
+  {
+   "fieldname": "carat_received",
+   "fieldtype": "Float",
+   "label": "Carat Received"
+  },
+  {
+   "fieldname": "column_break_drpq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assorter",
+   "fieldtype": "Link",
+   "label": "Assorter",
+   "mandatory_depends_on": "eval:doc.assorting_status === \"Completed\";",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_rixi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "accepted_pieces",
+   "fieldtype": "Int",
+   "label": "Pieces Confirmed",
+   "mandatory_depends_on": "eval:doc.assorting_status === \"Completed\";",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "accepted_carat",
+   "fieldtype": "Float",
+   "label": "Carat Confirmed"
+  },
+  {
+   "fieldname": "column_break_rzvv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pieces_balance",
+   "fieldtype": "Int",
+   "label": "Pieces Balance"
+  },
+  {
+   "fieldname": "carats_balance",
+   "fieldtype": "Float",
+   "label": "Carats Balance"
   },
   {
    "fieldname": "item_details_section",
@@ -238,7 +325,6 @@
    "options": "Item Group"
   },
   {
-   "fetch_from": "sr_id.country_of_origin",
    "fieldname": "country_of_origin",
    "fieldtype": "Data",
    "label": "Country of Origin"
@@ -248,24 +334,36 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "sr_id.avg_carat_weight",
    "fieldname": "avg_carat_weight",
    "fieldtype": "Float",
    "label": "Avg Carat Weight"
   },
   {
-   "fetch_from": "sr_id.sku_carat_weight",
    "fieldname": "sku_carat_weight",
    "fieldtype": "Float",
    "label": "SKU Carat Weight"
   },
   {
-   "depends_on": "doc.item_code;",
+   "fieldname": "sr_id",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Stone Request Id",
+   "options": "Stone Request"
+  },
+  {
    "fieldname": "column_break_nyzr",
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "sr_id.stone_pieces",
+   "fieldname": "gemstone",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Gemstone",
+   "options": "Gemstones"
+  },
+  {
    "fieldname": "stone_pieces",
    "fieldtype": "Int",
    "in_list_view": 1,
@@ -278,45 +376,18 @@
    "label": "Stone Carats"
   },
   {
-   "fieldname": "suppliervendor_documents_section",
+   "collapsible": 1,
+   "fieldname": "section_break_qzvy",
    "fieldtype": "Section Break",
-   "label": "Stone Quantity Details"
+   "hidden": 1,
+   "label": "Packet Details"
   },
   {
-   "fieldname": "column_break_ixvp",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "pieces_received",
-   "fieldtype": "Int",
-   "label": "Received Pieces"
-  },
-  {
-   "depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
-   "fieldname": "column_break_ybtj",
-   "fieldtype": "Column Break"
-  },
-  {
-   "depends_on": "eval:doc.stone_receipt_type === \"Vendor Product\"",
-   "fieldname": "delivery_challan_no",
-   "fieldtype": "Data",
-   "label": "Delivery Challan No",
-   "mandatory_depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
-   "no_copy": 1
-  },
-  {
-   "depends_on": "eval:doc.stone_receipt_type === \"Vendor Product\"",
-   "fieldname": "delivery_challan_date",
-   "fieldtype": "Date",
-   "label": "Delivery Challan Date",
-   "mandatory_depends_on": "eval:doc.stone_receipt_type == \"Vendor Product\"",
-   "no_copy": 1
-  },
-  {
-   "fieldname": "required_pieces",
-   "fieldtype": "Int",
-   "label": "Requested Pieces",
-   "read_only": 1
+   "fieldname": "stone_transaction_details",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "label": "Stone Transaction Details",
+   "options": "Stone Receipt Item"
   },
   {
    "collapsible": 1,
@@ -329,13 +400,13 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "sr_id.grade",
+   "fetch_from": "stone_receipt_id.grade",
    "fieldname": "grade",
    "fieldtype": "Data",
    "label": "Grade"
   },
   {
-   "fetch_from": "sr_id.cut",
+   "fetch_from": "stone_receipt_id.cut",
    "fieldname": "cut",
    "fieldtype": "Data",
    "label": "Cut"
@@ -345,13 +416,13 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "sr_id.setting_type",
+   "fetch_from": "stone_receipt_id.setting_type",
    "fieldname": "setting_type",
    "fieldtype": "Data",
    "label": "Setting Type"
   },
   {
-   "fetch_from": "sr_id.merch_colorattribute",
+   "fetch_from": "stone_receipt_id.merch_color__attribute",
    "fieldname": "merch_color__attribute",
    "fieldtype": "Link",
    "label": "Merch Color / Attribute",
@@ -362,7 +433,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "sr_id.stone_treatment_list",
+   "fetch_from": "stone_receipt_id.stone_treatment_list",
    "fieldname": "stone_treatment_list",
    "fieldtype": "Small Text",
    "label": "Stone Treatment List"
@@ -399,10 +470,18 @@
    "options": "Sales Order"
   },
   {
+   "fieldname": "column_break_bqux",
+   "fieldtype": "Column Break"
+  },
+  {
    "fieldname": "stone_sales_order",
    "fieldtype": "Link",
    "label": "Stone Sales Order",
    "options": "Sales Order"
+  },
+  {
+   "fieldname": "column_break_cvne",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "connections_tab",
@@ -411,75 +490,28 @@
    "show_dashboard": 1
   },
   {
-   "fieldname": "sr_id",
+   "fetch_from": "stone_receipt_id.sr_id",
+   "fieldname": "stone_request_id",
    "fieldtype": "Link",
    "hidden": 1,
-   "label": "Stone Request Id",
+   "label": "Stone Request ID",
    "options": "Stone Request"
   },
   {
-   "fieldname": "from_stone_request_column",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "requested_carats",
-   "fieldtype": "Float",
-   "label": "Requested Carats",
-   "read_only": 1
-  },
-  {
-   "fieldname": "carat_received",
-   "fieldtype": "Float",
-   "label": "Received Carats",
-   "precision": "3"
-  },
-  {
-   "fieldname": "column_break_mfvn",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "confirmed_pieces",
-   "fieldtype": "Int",
-   "label": "Confirmed Pieces",
-   "no_copy": 1
-  },
-  {
-   "fieldname": "confirmed_carats",
-   "fieldtype": "Float",
-   "label": "Confirmed Carats",
-   "no_copy": 1
-  },
-  {
-   "fieldname": "column_break_wasn",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "pending_pieces",
-   "fieldtype": "Int",
-   "label": "Pending Pieces",
-   "non_negative": 1
-  },
-  {
-   "fieldname": "pending_carat",
-   "fieldtype": "Float",
-   "label": "Pending Carats",
-   "precision": "3"
-  },
-  {
-   "fieldname": "stones_request_fetched",
-   "fieldtype": "Table",
-   "label": "Stones Request Fetched",
-   "options": "Stones Request Fetched"
+   "fieldname": "purchase_order_id",
+   "fieldtype": "Link",
+   "label": "Purchase Order ID",
+   "options": "Purchase Order"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-09-02 16:41:17.158953",
+ "modified": "2025-09-02 16:39:48.886553",
  "modified_by": "Administrator",
  "module": "espresso_app",
- "name": "Stone Receipt",
+ "name": "Receipt Transaction",
  "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [

@@ -9,6 +9,19 @@ override_whitelisted_methods = {
     "frappe.utils.change_log.get_versions": "espresso_app.overrides.get_versions.custom_get_app_versions"
 }
 
+# Ye section hooks.py mein hona chahiye
+doc_events = {
+    "Stone Request": {
+        "get_stone_request_dashboard": "espresso_app.overrides.stone_request.get_stone_request_dashboard"
+    }
+}
+
+override_doctype_dashboards = {
+    "Sales Order": "espresso_app.overrides.sales_order.get_sales_order_dashboard",
+    "Stone Request": "espresso_app.overrides.stone_request.get_stone_request_dashboard",
+    "Stone Receipt": "espresso_app.overrides.stone_receipt.get_stone_receipt_dashboard",
+    "Stone Confirmation": "espresso_app.overrides.stone_confirmation.get_stone_confirmation_dashboard"
+}
 # Apps
 # ------------------
 # required_apps = []

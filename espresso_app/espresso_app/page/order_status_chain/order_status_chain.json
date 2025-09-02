@@ -1,0 +1,18 @@
+{
+ "content": null,
+ "creation": "2025-08-21 13:15:16.461446",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2025-08-21 13:15:16.461446",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "order_status_chain",
+ "owner": "Administrator",
+ "page_name": "order_status_chain",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0
+}

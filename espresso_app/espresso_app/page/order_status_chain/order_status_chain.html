@@ -1,0 +1,419 @@
+<!-- Header section with sky blue background -->
+<div>
+    <div class="text-center">
+        <h2>Sales Order Status Report</h2>
+        <p>Complete workflow tracking from customer order to final delivery</p>
+    </div>
+</div>
+<!-- Filters Section -->
+<div class="container mt-3">
+    <div class="card filter-card" style=" border: none;">
+
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <!-- <label for="filter-company" class="form-label">Company</label> -->
+                        <select id="filter-company" class="form-control">
+                            <option value="">Company</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <!-- <label for="filter-sales-order-type" class="form-label">Sales Order Type</label> -->
+                        <select id="filter-sales-order-type" class="form-control">
+                            <option value="">Order Type</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <!-- <label for="filter-customer" class="form-label">Customer</label> -->
+                        <select id="filter-customer" class="form-control">
+                            <option value="">Customer</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <!-- <label for="filter-department" class="form-label">Department</label> -->
+                        <select id="filter-department" class="form-control">
+                            <option value="">Departments</option>
+                        </select>
+                    </div>
+                </div>
+            <!-- </div>
+            <div class="row"> -->
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <!-- <label for="placeholder" class="form-label">Date</label> -->
+                        <input type="date" id="filter-date-from" class="form-control" placeholder="Date">
+                    </div>
+                </div>
+                <div class="col-md-2 d-flex align-items-end justify-content-between">
+                    <div class="form-group w-100">
+                        <button id="apply-filters" class="btn btn-primary mr-2">
+                            <i class="fa fa-search"></i> Apply Filters
+                        </button>
+                        <button id="clear-filters" class="btn btn-secondary">
+                            <i class="fa fa-refresh"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cards container -->
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <div class="card card-stat">
+                <div class="card-body text-center">
+                    <h1 id="total_orders" class="count text-danger">0</h1>
+                    <p class="label">Total Orders</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-stat">
+                <div class="card-body text-center">
+                    <h1 id="in_progress_orders" class="count text-info">0</h1>
+                    <p class="label">In Progress</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-stat">
+                <div class="card-body text-center">
+                    <h1 id="completed_orders" class="count text-warning">0</h1>
+                    <p class="label">Completed</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-stat">
+                <div class="card-body text-center">
+                    <h1 id="overdue_orders" class="count text-success">0</h1>
+                    <p class="label">Overdue</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div id="search-result" class="mt-4"></div>
+
+</div>
+
+<!-- Custom styling -->
+<style>
+.card-stat {
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    transition: transform 0.2s ease;
+}
+.card-stat:hover {
+    transform: scale(1.03);
+}
+.card-stat .count {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+}
+.card-stat .label {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #666;
+}
+.tree-node {
+    margin-top: 10px;
+}
+
+.node-header {
+    background: #f9fafb;
+    border-left: 4px solid #e63946;
+    padding: 12px 16px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.node-header:hover {
+    background: #f9fafb;
+}
+
+.node-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.expand-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+    color: #666;
+}
+
+.expand-icon.expanded {
+    transform: rotate(90deg);
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-success { background: #d1fae5; color: #065f46; margin-right: 2rem;}
+.badge-info { background: #dbeafe; color: #1e40af;margin-right: 2rem; }
+.badge-warning { background: #fef3c7; color: #92400e; margin-right: 2rem;}
+.badge-danger { background: #fee2e2; color: #991b1b; margin-right: 2rem;}
+.badge-secondary { background: #e5e7eb; color: #374151; margin-right: 2rem;}
+.badge-draft { background: #e0e7ff; color: #3730a3;margin-right: 2rem; }
+.badge-pending { background: #fef3c7; color: #92400e; margin-right: 2rem;}
+.badge-inquiry { background: #ecfdf5; color: #047857;margin-right: 2rem; }
+
+.node-children {
+    margin-left: 20px;
+    margin-top: 8px;
+    display: none;
+}
+
+.node-children.show {
+    display: block;
+}
+
+/* Arrow styles */
+.arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid #666;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+.arrow-dropdown{
+    position: absolute;
+    right: 3rem;
+}
+
+.arrow.down {
+    transform: rotate(90deg);
+}
+h3.ellipsis.title-text {
+    display: none;
+}
+/* Enhanced styles for thumbnail images in status bars */
+.node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    margin-bottom: 2px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.node-header:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.node-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0; /* Allow text to wrap */
+}
+.node-status{
+    display: flex;
+    
+}
+.arrow-dropdown {
+    font-size: 12px;
+    color: #6c757d;
+    margin-right: 22px;
+    transition: transform 0.2s ease;
+    width: 16px;
+    text-align: center;
+}
+
+/* Thumbnail styles */
+.thumbnail-image {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+    flex-shrink: 0; /* Prevent image from shrinking */
+    transition: opacity 0.2s ease;
+}
+
+.thumbnail-image:hover {
+    opacity: 0.8;
+}
+
+/* For dummy/placeholder images, use contain instead of cover */
+.thumbnail-image[src*="data:image/svg"] {
+    object-fit: contain;
+    padding: 2px;
+}
+
+.thumbnail-placeholder {
+    width: 32px;
+    height: 32px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1;
+    flex-shrink: 0;
+}
+/* ADD THESE NEW STYLES TO YOUR EXISTING CSS SECTION */
+
+/* Enhanced Thumbnail styles with hover popup */
+.thumbnail-container {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.thumbnail-image {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.thumbnail-image:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+/* Popup image on hover */
+.thumbnail-popup {
+    position: absolute;
+    top: -10px;
+    left: 40px;
+    width: 200px;
+    height: 200px;
+    background: white;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8) translateY(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.thumbnail-popup img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.thumbnail-container:hover .thumbnail-popup {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+}
+
+/* Popup positioning for different screen areas */
+.thumbnail-container.popup-right .thumbnail-popup {
+    left: -210px;
+}
+
+.thumbnail-container.popup-top .thumbnail-popup {
+    top: -210px;
+    left: -84px;
+}
+
+.thumbnail-popup .no-image-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .thumbnail-popup {
+        width: 150px;
+        height: 150px;
+        left: 35px;
+    }
+    .thumbnail-container.popup-right .thumbnail-popup {
+        left: -160px;
+    }
+}
+/* Status badge styles */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Node details section */
+.node-details {
+    margin-top: 5px;
+    padding-left: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .node-header {
+        padding: 10px 12px;
+    }
+    
+    .node-title {
+        gap: 8px;
+    }
+    
+    .thumbnail-image,
+    .thumbnail-placeholder {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .thumbnail-placeholder {
+        font-size: 9px;
+    }
+}
+</style>

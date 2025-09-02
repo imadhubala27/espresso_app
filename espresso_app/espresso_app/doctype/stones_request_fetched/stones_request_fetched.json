@@ -1,0 +1,71 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-01 12:41:04.255215",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "stone_request_details_section",
+  "stones_request_id",
+  "column_break_upoe",
+  "requested_piece",
+  "column_break_ohmv",
+  "requested_carat"
+ ],
+ "fields": [
+  {
+   "fieldname": "stone_request_details_section",
+   "fieldtype": "Section Break",
+   "label": "Stone Request Details"
+  },
+  {
+   "columns": 2,
+   "fieldname": "stones_request_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Stones Request ID",
+   "options": "Stone Request",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_upoe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fetch_from": "stones_request_id.required_piece",
+   "fieldname": "requested_piece",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Requested Piece"
+  },
+  {
+   "fieldname": "column_break_ohmv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fetch_from": "stones_request_id.required_carat",
+   "fieldname": "requested_carat",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Requested Carat",
+   "precision": "3"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-01 12:41:18.961173",
+ "modified_by": "Administrator",
+ "module": "espresso_app",
+ "name": "Stones Request Fetched",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
